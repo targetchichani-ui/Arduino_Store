@@ -407,3 +407,88 @@ html[dir="ltr"] .mega-column ul li a:hover {
     opacity: 1;   /* تولي واضحة 100% */
     transform: scale(1.1); 
 }
+/* ==========================================================================
+   MESSING WITH SIZES ONLY: المقاسات الخاصة بالهاتف (أقل من 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+    
+    /* 1. تعديل الـ Header والمينيو باش ما يتداخلوش */
+    .main-header-nav .nav-container {
+        flex-direction: column !important;
+        gap: 15px !important;
+        padding: 15px 10px !important;
+        text-align: center !important;
+    }
+
+    /* تحويل الـ nav المكتوب بـ flex إلى عمودي */
+    .main-header-nav nav {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 15px !important;
+    }
+
+    /* جعل القائمة (الرئيسية، مجتمع، المشاريع) تحت بعضها ونقية */
+    .nav-menu-list {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 15px !important;
+        width: 100% !important;
+        padding: 0 !important;
+    }
+
+    /* ضبط القوائم المنسدلة (Mega Menu) باش تفتح بشكل مريح في الموبايل */
+    .mega-menu {
+        position: static !important;
+        width: 100% !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        box-shadow: none !important;
+        background: rgba(255, 255, 255, 0.05) !important;
+        padding: 10px !important;
+        border-radius: 8px !important;
+    }
+
+    .mega-menu-container {
+        padding: 0 !important;
+    }
+
+    /* 2. ضبط مقاسات الـ Hero Section والعناوين */
+    .hero-section {
+        padding: 100px 15px !important; /* تقليل الـ padding الفوقاني */
+        min-height: auto !important;
+    }
+
+    .hero-content h1 {
+        font-size: 1.8rem !important; /* تصغير حجم العنوان باش ما يخرجش على الشاشة */
+        line-height: 1.4 !important;
+    }
+
+    .hero-content p {
+        font-size: 1rem !important;
+        padding: 0 10px !important;
+    }
+
+    /* 3. ترتيب الـ Footer باش يرجع عمودي وكل صندوق ياخذ راحته */
+    .footer-container {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 30px !important;
+        padding: 40px 20px !important;
+    }
+
+    .footer-box {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .footer-box.contact-box p, 
+    .footer-box.social-box p {
+        justify-content: center !important; /* تمركز الأيقونات والتواصل في الوسط */
+    }
+
+    .social-icons {
+        justify-content: center !important;
+        gap: 15px !important;
+    }
+}
