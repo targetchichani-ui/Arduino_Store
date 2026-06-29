@@ -408,63 +408,57 @@ html[dir="ltr"] .mega-column ul li a:hover {
     transform: scale(1.1); 
 }
 /* ==========================================================================
-   ONLY RESPONSIVE SIZES: المقاسات الصحيحة للهاتف بدون تغيير الديزاين
+   PERFECT NAV BAR & LAYOUT FOR MOBILE (max-width: 768px)
    ========================================================================== */
 @media (max-width: 768px) {
     
-    /* 1. إصلاح الـ Header ليكون مرناً في الهاتف */
+    /* 1. ضبط الـ Header الرئيسي في الموبايل */
     .main-header-nav {
-        position: relative !important; /* يخليه ما يغطيش على الشاشة قاع */
+        position: static !important; /* ينحي التثبيت باش ما يغطيش على الـ Hero */
         padding: 15px 20px !important;
+        width: 100% !important;
     }
 
+    /* يرجع اللوغو والمحتوى مستفين عمودياً وبيناتهم مسافة مريغلة */
     .nav-container {
         flex-direction: column !important;
         gap: 15px !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
     }
 
-    /* تحويل الـ HTML inline style flex إلى عمودي */
+    /* تحويل الـ HTML inline style flex إلى عمودي نقي */
     .nav-container nav {
         flex-direction: column !important;
         gap: 15px !important;
         width: 100% !important;
+        align-items: center !important;
     }
 
-    /* تنسيق أزرار القائمة تحت بعضها بانتظام */
+    /* تنسيق أزرار القائمة (الرئيسية، مجتمع، المشاريع) */
     .nav-menu-list {
         flex-direction: column !important;
-        gap: 12px !important;
+        gap: 15px !important;
         width: 100% !important;
         padding: 0 !important;
+        align-items: center !important;
     }
 
-    /* إصلاح أزرار اللغة وتسوق لتأخذ مساحة مناسبة */
-    .lang-switch-btn {
-        margin-right: 0 !important;
-        width: 120px;
-        text-align: center;
-    }
-
-    .btn-shop-orange {
-        width: 100% !important;
-        text-align: center;
-    }
-
-    /* إصلاح الـ Mega Menu لكي لا يتداخل عشوائياً */
+    /* إخفاء الـ Mega Menu في الموبايل عشان ما يتداخلش عشوائياً */
     .mega-menu {
-        position: relative !important;
-        top: 0 !important;
-        right: 0 !important;
-        left: 0 !important;
+        display: none !important;
+        position: static !important;
         width: 100% !important;
         box-shadow: none !important;
         background-color: #f7fafc !important;
         border: 1px solid #e2e8f0 !important;
         border-top: 3px solid var(--primary-color) !important;
-        display: none !important; /* مخفي، ويفتح فقط عند الحاجة */
+        padding: 10px !important;
+        margin-top: 5px !important;
     }
 
-    /* يظهر فقط عند تمرير الماوس أو الضغط في الموبايل */
+    /* يفتح الـ Mega Menu بس كي تضغط أو تحط يدك عليه */
     .has-mega-menu:hover .mega-menu {
         display: block !important;
         opacity: 1 !important;
@@ -476,41 +470,57 @@ html[dir="ltr"] .mega-column ul li a:hover {
         align-items: center !important;
     }
 
-    /* 2. ضبط مقاسات الـ Hero Section */
+    /* تنسيق زر اللغة وزر تسوق باش يجوا بـ قياس متناسق */
+    .lang-switch-btn {
+        margin-right: 0 !important;
+        width: 100% !important;
+        max-width: 200px !important;
+        text-align: center !important;
+        padding: 10px !important;
+    }
+
+    .btn-shop-orange {
+        width: 100% !important;
+        max-width: 200px !important;
+        text-align: center !important;
+        padding: 10px !important;
+    }
+
+    /* 2. ضبط الـ Hero Section باش ما تطلعش فوقها الكود */
     .hero-section {
         min-height: auto !important;
-        padding: 60px 15px !important;
+        padding: 50px 15px !important;
     }
 
     .hero-content h1 {
-        font-size: 1.8rem !important;
+        font-size: 1.7rem !important;
         line-height: 1.4 !important;
     }
 
     .hero-content p {
-        font-size: 1rem !important;
+        font-size: 0.95rem !important;
         margin-bottom: 20px !important;
     }
 
-    /* 3. شبكة المنتجات (الـ Grid) */
+    /* 3. شبكة المنتجات (الـ Grid) زوج حبات في السطر متناسقين */
     .products-grid-container {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)) !important; /* يعرض زوج منتجات متناسقين في سطر الموبايل */
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important;
         gap: 15px !important;
         padding: 0 10px !important;
     }
 
     .card-img-box {
-        height: 130px !important; /* تقليل الارتفاع في التيليفون */
+        height: 120px !important;
     }
 
     .card-info h3 {
-        font-size: 0.95rem !important;
+        font-size: 0.9rem !important;
         height: 2.6rem !important;
     }
 
     /* 4. الـ Footer */
     .footer-container {
-        grid-template-columns: 1fr !important; /* صندوق واحد تحت خوه ديريكت */
+        grid-template-columns: 1fr !important;
         gap: 30px !important;
         text-align: center !important;
         padding: 40px 15px !important;
