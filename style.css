@@ -424,18 +424,16 @@ html[dir="ltr"] .mega-column ul li a:hover {
     color: #2d3748;
     font-size: 24px;
     cursor: pointer;
-    transition: color 0.2s;
 }
 
 /* ==========================================================================
-   MOBILE RESPONSIVE WITH HAMBURGER MENU (max-width: 768px)
+   MOBILE RESPONSIVE: يخدم غير في التيليفون (أقل من 768px)
    ========================================================================== */
 @media (max-width: 768px) {
     
     .main-header-nav {
-        position: static !important; /* نخلّوه عادي باش ما يتغطاش الـ Hero */
+        position: static !important;
         padding: 15px 20px !important;
-        width: 100% !important;
     }
 
     /* اللوغو والزر في سطر واحد مريغل */
@@ -451,10 +449,12 @@ html[dir="ltr"] .mega-column ul li a:hover {
         display: block !important;
     }
 
-    /* تخبئة الـ nav بالكامل في الموبايل حتى نكليكو على الزر */
+    /* كسر الـ inline style تاع الـ PC وتخبئة المنيو في الموبايل */
     .main-header-nav nav {
         display: none !important; 
         flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
         width: 100% !important;
         background-color: #ffffff;
         box-shadow: 0 10px 15px rgba(0,0,0,0.05);
@@ -462,10 +462,9 @@ html[dir="ltr"] .mega-column ul li a:hover {
         margin-top: 15px;
         border-radius: 12px;
         border: 1px solid #e2e8f0;
-        gap: 20px !important;
     }
 
-    /* كلاس الفتح بالـ JavaScript */
+    /* كي تضغط على الزر، هاد الكلاس يرجعها Flex عمودي */
     .main-header-nav nav.active {
         display: flex !important;
     }
@@ -504,10 +503,5 @@ html[dir="ltr"] .mega-column ul li a:hover {
         width: 80% !important;
         max-width: 200px;
         text-align: center;
-    }
-
-    .hero-section {
-        padding-top: 40px !important;
-        min-height: auto !important;
     }
 }
