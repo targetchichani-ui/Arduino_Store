@@ -316,7 +316,8 @@ html[dir="ltr"] .mega-column ul li a:hover {
     margin-bottom: 8px;
     line-height: 1.4;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+   -webkit-line-clamp: 2;
+    line-clamp: 2; /* الخاصية القياسية اللّي طلبها VS Code */
     -webkit-box-orient: vertical;
     overflow: hidden;
     height: 2.8rem; /* مساحة ثابتة ومثالية للاسم */
