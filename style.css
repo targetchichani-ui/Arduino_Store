@@ -407,7 +407,16 @@ html[dir="ltr"] .mega-column ul li a:hover {
     opacity: 1;   /* تولي واضحة 100% */
     transform: scale(1.1); 
 }
-/* الزر يكون مخفي دايماً في الـ PC */
+/* ==========================================================================
+   DESKTOP NAV FIX (تعديل الـ PC بعد حذف الـ inline style)
+   ========================================================================== */
+.main-header-nav nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* زر الـ 3 خطوط يكون مخفي دايماً في الـ PC */
 .menu-toggle-btn {
     display: none;
     background: transparent;
@@ -423,73 +432,67 @@ html[dir="ltr"] .mega-column ul li a:hover {
    ========================================================================== */
 @media (max-width: 768px) {
     
-    /* ضبط الـ Header الرئيسي */
     .main-header-nav {
-        position: fixed !important; /* يرجع مثبت الفوق قاع بشكل احترافي */
-        top: 0;
-        left: 0;
-        width: 100% !important;
+        position: static !important; /* نخلّوه عادي باش ما يتغطاش الـ Hero */
         padding: 15px 20px !important;
-        z-index: 1000;
+        width: 100% !important;
     }
 
-    /* اللوغو والزر تاع القائمة يجوا في سطر واحد متناسق */
+    /* اللوغو والزر في سطر واحد مريغل */
     .nav-container {
-        flex-direction: row !important; /* يخليهم في سطر واحد */
+        flex-direction: row !important;
         justify-content: space-between !important;
-        flex-wrap: wrap;
+        align-items: center !important;
+        width: 100% !important;
     }
 
-    /* إظهار زر الـ 3 خطوط في التيليفون برك */
+    /* إظهار زر الـ 3 خطوط في التيليفون فقط */
     .menu-toggle-btn {
         display: block !important;
     }
 
-    /* تخبئة القائمة بالكامل في الحالة العادية */
-    .nav-container nav {
-        display: none; /* مخفية */
+    /* تخبئة الـ nav بالكامل في الموبايل حتى نكليكو على الزر */
+    .main-header-nav nav {
+        display: none !important; 
         flex-direction: column !important;
         width: 100% !important;
         background-color: #ffffff;
         box-shadow: 0 10px 15px rgba(0,0,0,0.05);
-        padding: 20px 0;
+        padding: 20px 0 !important;
         margin-top: 15px;
         border-radius: 12px;
         border: 1px solid #e2e8f0;
         gap: 20px !important;
     }
 
-    /* هاد الكلاس يخدم بالـ JS كي نكليكو على الزر باش تفتح القائمة */
-    .nav-container nav.active {
+    /* كلاس الفتح بالـ JavaScript */
+    .main-header-nav nav.active {
         display: flex !important;
     }
 
-    /* تنسيق عناصر القائمة عمودياً داخل المنيو المفتوح */
     .nav-menu-list {
         flex-direction: column !important;
         gap: 15px !important;
         width: 100% !important;
         padding: 0 !important;
+        align-items: center !important;
     }
 
-    /* تخبئة الـ Mega Menu داخل الموبايل عشان ما تفسدش المنيو */
     .mega-menu {
         position: static !important;
         width: 90% !important;
         margin: 5px auto 0 auto !important;
         box-shadow: none !important;
         background-color: #f7fafc !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        transform: none !important;
         display: none !important;
     }
 
     .has-mega-menu:hover .mega-menu {
         display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
 
-    /* ضبط أزرار اللغة وتسوق */
     .lang-switch-btn {
         margin-right: 0 !important;
         width: 80% !important;
@@ -503,9 +506,8 @@ html[dir="ltr"] .mega-column ul li a:hover {
         text-align: center;
     }
 
-    /* زيادة الـ padding للـ Hero باش ما تتغطاش بسبّة الـ Fixed Navbar */
     .hero-section {
-        padding-top: 120px !important;
+        padding-top: 40px !important;
         min-height: auto !important;
     }
 }
