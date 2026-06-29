@@ -1,0 +1,408 @@
+:root {
+    --primary-color: #00818a;
+    --light-color: #6ba7b3;
+    --dark-color: #21656a;
+    --bg-color: #eaf6f6;
+    --cta-color: #e67e22;
+}
+
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body { background-color: var(--bg-color); }
+
+.main-header-nav {
+    background-color: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 15px 5%;
+}
+.nav-container { display: flex; justify-content: space-between; align-items: center; }
+.logo {
+    text-decoration: none !important;
+}
+
+.nav-container ul { display: flex; list-style: none; gap: 20px; }
+.nav-container a { text-decoration: none; color: #333; font-weight: 500; }
+
+.hero-section {
+    position: relative; min-height: 85vh; display: flex; align-items: center;
+    justify-content: center; text-align: center; padding: 0 20px; overflow: hidden;
+}
+.hero-canvas-bg {
+    position: absolute; top: -10%; left: -10%; width: 120%; height: 120%; z-index: 1;
+    background: radial-gradient(circle at 50% 50%, #d8efef 0%, var(--bg-color) 70%); filter: blur(40px);
+}
+.hero-content { position: relative; z-index: 2; max-width: 800px; }
+.hero-content h1 { font-size: 2.5rem; color: #222; margin-bottom: 20px; }
+.hero-content p { font-size: 1.2rem; color: #555; margin-bottom: 30px; }
+.btn-cta {
+    display: inline-block;
+    padding: 12px 32px;
+    background-color: var(--cta-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 14px; /* تدويرة الحواف الاحترافية */
+    font-weight: bold;
+    font-size: 18px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-cta:hover {
+    background-color: #cf6e1b;
+}
+
+.main-footer {
+    background-color: #113f42; color: #e2f3f5; padding: 60px 5% 20px 5%; border-top: 4px solid var(--primary-color);
+}
+.footer-container {
+    max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1.5fr 1.5fr; gap: 40px;
+}
+.footer-box h3 { color: #ffffff; font-size: 20px; margin-bottom: 20px; position: relative; padding-bottom: 10px; }
+.footer-box h3::after { content: ''; position: absolute; bottom: 0; right: 0; width: 40px; height: 3px; background-color: var(--cta-color); }
+.footer-box p, .footer-box a { font-size: 15px; line-height: 1.8; color: #bce3e6; text-decoration: none; transition: color 0.3s; }
+.footer-box ul { list-style: none; }
+.footer-box ul li { margin-bottom: 10px; }
+.footer-box ul li a:hover, .contact-box a:hover { color: var(--cta-color); }
+
+.social-icons { display: flex; gap: 12px; margin-top: 15px; }
+.social-icons a {
+    display: flex; align-items: center; justify-content: center; width: 40px; height: 40px;
+    background-color: rgba(255, 255, 255, 0.08); border-radius: 50%; color: #ffffff; font-size: 18px; transition: transform 0.3s;
+}
+.social-icons a:hover { transform: translateY(-5px); color: #ffffff; }
+.social-icons .icon-yt:hover { background-color: #ff0000; }
+.social-icons .icon-tg:hover { background-color: #0088cc; }
+.social-icons .icon-ig:hover { background-color: #e1306c; }
+.social-icons .icon-fb:hover { background-color: #1877f2; }
+
+.footer-bottom { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+
+@media (max-width: 900px) {
+    .footer-container { grid-template-columns: 1fr; gap: 30px; text-align: center; }
+    .footer-box h3::after { right: 50%; transform: translateX(50%); }
+    .social-icons { justify-content: center; }
+}
+
+/* تنسيق الـ Navbar المعدل */
+.main-header-nav {
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 15px 5%;
+    /* زِد هاد السطور هنا بضبط */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-menu-list {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-menu-list a {
+    text-decoration: none;
+    color: #2d3748;
+    font-size: 17px;
+    font-weight: 700; /* خط عريض غامق احترافي */
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+}
+
+.nav-menu-list a:hover {
+    color: var(--primary-color);
+}
+
+.nav-arrow {
+    font-size: 11px;
+    color: #718096;
+}
+
+.btn-shop-orange {
+    background-color: #e67e22 !important; /* لون برتقالي */
+    color: #ffffff !important;           /* كتابة بيضاء */
+    padding: 8px 24px !important;        /* أبعاد متناسقة تماماً لـ Arduino */
+    border-radius: 14px !important;      /* تدويرة حواف مضبوطة وملمومة */
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    transition: background-color 0.2s ease !important;
+}
+
+.btn-shop-orange:hover {
+    background-color: #cf6e1b !important;
+}
+
+/* =================================================== */
+/* الزيادة الخاصة بالـ English */
+/* =================================================== */
+
+html[dir="ltr"] .footer-box h3::after {
+    right: auto;
+    left: 0;
+}
+
+.lang-switch-btn {
+    background-color: transparent;
+    border: 1.5px solid #cbd5e0;
+    color: #4a5568;
+    padding: 7px 18px;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-right: 15px;
+}
+
+.lang-switch-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background-color: rgba(0, 129, 138, 0.03);
+}
+
+/* =================================================== */
+/* إضافة تنسيقات الـ Mega Menu الخاصة بالمشاريع والمجتمع */
+/* =================================================== */
+
+.has-mega-menu {
+    position: relative;
+}
+
+.mega-menu {
+    position: absolute;
+    top: 100%;
+    right: -30px;
+    width: 280px;
+    background-color: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 18px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: all 0.25s ease-in-out;
+    z-index: 1000;
+    border-top: 3.5px solid var(--primary-color);
+}
+
+.has-mega-menu:hover .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.mega-menu-container {
+    text-align: right;
+}
+
+.mega-column ul {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    list-style: none !important;
+    padding: 0 !important;
+}
+
+.mega-column ul li a {
+    font-size: 14px !important;
+    color: #4a5568 !important;
+    font-weight: 600 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    transition: color 0.2s, transform 0.2s !important;
+}
+
+.mega-column ul li a i {
+    color: var(--light-color);
+    font-size: 13px;
+    width: 18px;
+    text-align: center;
+}
+
+.mega-column ul li a:hover {
+    color: var(--primary-color) !important;
+    transform: translateX(-4px);
+}
+
+html[dir="ltr"] .mega-menu {
+    right: auto;
+    left: -30px;
+}
+
+html[dir="ltr"] .mega-menu-container {
+    text-align: left;
+}
+
+html[dir="ltr"] .mega-column ul li a:hover {
+    transform: translateX(4px);
+}
+
+/* =================================================== */
+/* التنسيقات الاحترافية المعدلة لبطاقات المنتجات (ثيم فاتح متناسق) */
+/* =================================================== */
+
+.products-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.product-card {
+    background: #ffffff; /* رجعناها بيضاء نيشَان لتناسب الموقع */
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+/* تأثير الـ Glow البرتقالي الاحترافي متناسق مع الثيم الفاتح */
+.product-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--cta-color);
+    box-shadow: 0 10px 25px rgba(230, 126, 34, 0.15), 0 0 15px rgba(230, 126, 34, 0.1);
+}
+
+.card-img-box {
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+    background: #f7fafc;
+    border-bottom: 1px solid #edf2f7;
+}
+
+.card-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .card-img-box img {
+    transform: scale(1.08);
+}
+
+.card-info {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* إصلاح التقطيع: العناوين تظهر كاملة الآن في سطرين كحد أقصى */
+.card-info h3 {
+    font-size: 1.05rem;
+    color: #2d3748;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 2.8rem; /* مساحة ثابتة ومثالية للاسم */
+}
+
+.product-category {
+    font-size: 0.8rem;
+    color: var(--primary-color); /* متناسق مع اللون الأساسي الأخضر للموقع */
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.card-footer-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.price {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #2d3748; /* لون غامق واضح ومريح للعين */
+}
+
+.add-to-cart-btn {
+    background: var(--cta-color);
+    border: none;
+    color: #fff;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.add-to-cart-btn:hover {
+    background: #cf6e1b;
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+}
+
+.add-to-cart-btn:active {
+    transform: scale(0.95);
+}
+/* تنسيق الدائرة ليكون مطابقاً لخاوتها بضبط */
+.gmail-neon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.08); /* نفس الخلفية الشفافة */
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none;
+}
+
+/* تنسيق اللوغو ليكون أبيض وشفاف في الحالة العادية */
+.gmail-neon-icon {
+    width: 22px;
+    height: auto;
+    /* هاد السطرين يرجعوا اللوغو أبيض وشفاف كيمّا خاوتها بضبط قبل ما تلمسه */
+    filter: brightness(0) invert(1); 
+    opacity: 0.7; /* نفس درجة شفافية الأيقونات الأخرى */
+    transition: all 0.3s ease;
+}
+
+/* التفاعل الديناميكي عند مرور الماوس (Hover) */
+.gmail-neon-link:hover {
+    transform: translateY(-5px); /* ترتفع للأعلى */
+    background-color: rgba(255, 255, 255, 0.12);
+    
+    /* التوهج النيوني الملون ورا الدائرة */
+    box-shadow: 0 0 15px rgba(234, 67, 53, 0.5),   
+                0 0 25px rgba(66, 133, 244, 0.3);  
+}
+
+/* إرجاع ألوان الجيميل الأصلية وتكبيره عند الـ Hover */
+.gmail-neon-link:hover .gmail-neon-icon {
+    filter: none; /* تنحي اللون الأبيض وترجع الألوان الأصلية قاع */
+    opacity: 1;   /* تولي واضحة 100% */
+    transform: scale(1.1); 
+}

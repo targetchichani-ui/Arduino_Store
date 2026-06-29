@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link class="icon" type="sui/IMG_0780.jpeg" href="/IMG_0780.jpeg">
+    <title data-i18n="doc_title">متجر أردوينو الإلكتروني - Houssam HK</title>
+    <!-- ربط أيقونات الحسابات الرسمية -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- ربط ملف الـ CSS الموحد -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+   <!-- شريط التنقل العلوي الثابت والموحد للموقع -->
+    <header class="main-header-nav">
+        <div class="nav-container">
+            
+            <!-- اللوغو الثابت -->
+           <!-- اللوغو مصلح 100% يحافظ على الألوان والترجمة والرابط -->
+            <a href="index.html" class="logo" data-i18n="logo">أردوينو <span>ستور</span></a>
+            
+            <nav style="display: flex; align-items: center; gap: 20px;">
+                <ul class="nav-menu-list">
+                    <!-- العودة للرئيسية تتوجه إلى index.html -->
+                    <li><a href="index.html" data-i18n="nav_home">الرئيسية</a></li>
+                    
+                    <!-- الـ Mega Menu الخاصة بالمجتمع -->
+                    <li class="has-mega-menu">
+                        <a href="#" data-i18n="nav_community">مجتمع <i class="fas fa-chevron-down nav-arrow"></i></a>
+                        <div class="mega-menu">
+                            <div class="mega-menu-container">
+                                <div class="mega-column">
+                                    <ul>
+                                        <li><a href="https://t.me/webdev_trainings" target="_blank" data-i18n="comm_web"><i class="fas fa-code"></i> web developer</a></li>
+                                        <li><a href="https://t.me/applicationdeveloperss" target="_blank" data-i18n="comm_app"><i class="fas fa-mobile-alt"></i> app developer</a></li>
+                                        <li><a href="https://youtu.be/7_PeuTsx7UM" target="_blank" data-i18n="comm_ai"><i class="fas fa-robot"></i> Ai automation</a></li>
+                                        <li><a href="https://youtu.be/aPi_Bm5DWFo" target="_blank" data-i18n="comm_workshops"><i class="fas fa-chalkboard-teacher"></i> workshops</a></li>
+                                        <li><a href="https://github.com/targetchichani-ui" target="_blank" data-i18n="comm_github"><i class="fab fa-github"></i> github</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- الـ Mega Menu الخاصة بالمشاريع -->
+                    <li class="has-mega-menu">
+                        <a href="#" data-i18n="nav_projects">المشاريع <i class="fas fa-chevron-down nav-arrow"></i></a>
+                        <div class="mega-menu">
+                            <div class="mega-menu-container">
+                                <div class="mega-column">
+                                    <ul>
+                                        <li><a href="https://youtu.be/auTM4S59pgo" target="_blank" data-i18n="proj_weather"><i class="fas fa-cloud-sun"></i> weather situation</a></li>
+                                        <li><a href="https://youtu.be/iZcMQ2dn27s" target="_blank" data-i18n="proj_thermometer"><i class="fas fa-thermometer-half"></i> LCD thermometer</a></li>
+                                        <li><a href="https://youtu.be/iFPfg-x1qX8" target="_blank" data-i18n="proj_blinking"><i class="fas fa-bolt"></i> Blinking LED</a></li>
+                                        <li><a href="https://youtu.be/04rOjWU-w7A" target="_blank" data-i18n="proj_alarm"><i class="fas fa-bell"></i> Motion alarm</a></li>
+                                        <li><a href="https://youtu.be/z524YqJvyak" target="_blank" data-i18n="proj_robot"><i class="fas fa-car"></i> Robot car</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- زر تسوق يبقى نشطاً وموجهاً لنفس الصفحة shop.html -->
+                    <li><a href="shop.html" class="btn-shop-orange" data-i18n="nav_shop">تسوق</a></li>
+                </ul>
+                <!-- زر تبديل اللغة -->
+                <button id="lang-toggle-btn" class="lang-switch-btn">English</button>
+            </nav>
+            
+        </div>
+    </header>
+
+    <main style="padding: 120px 5% 80px 5%; min-height: 80vh; background: var(--bg-color);">
+        <div style="text-align: center; margin-bottom: 60px;">
+            <h1 data-i18n="products_title" style="font-size: 2.8rem; color: #222; margin-bottom: 15px;">منتجاتنا المتميزة</h1>
+            <p data-i18n="products_desc" style="font-size: 1.2rem; color: #555;">اختر أفضل القطع الإلكترونية والمتحكمات الذكية لمشاريعك البرمجية.</p>
+        </div>
+
+        <div class="products-grid-container">
+            
+            <div class="product-card">
+                <div class="card-img-box">
+                    <img src="https://images.unsplash.com/photo-1603732551658-5fabbafa84eb?w=400&q=80" alt="Arduino Uno R3">
+                </div>
+                <div class="card-info">
+                    <h3>Arduino Uno R3 الأصلي</h3>
+                    <p class="product-category">Microcontrollers</p>
+                    <div class="card-footer-flex">
+                        <span class="price">2,400 DA</span>
+                        <button class="add-to-cart-btn" title="أضف إلى السلة"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-img-box">
+                    <img src="Arduino Mega 2560.jpg" alt="Arduino Mega 2560">
+                </div>
+                <div class="card-info">
+                    <h3>Arduino Mega 2560 R3</h3>
+                    <p class="product-category">Microcontrollers</p>
+                    <div class="card-footer-flex">
+                        <span class="price">3,800 DA</span>
+                        <button class="add-to-cart-btn" title="أضف إلى السلة"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-img-box">
+                    <img src="[New Article] Connect an ESP8266 NodeMCU to a….jpg" alt="NodeMCU ESP8266">
+                </div>
+                <div class="card-info">
+                    <h3>NodeMCU ESP8266 V3 WiFi</h3>
+                    <p class="product-category">IoT Boards</p>
+                    <div class="card-footer-flex">
+                        <span class="price">1,500 DA</span>
+                        <button class="add-to-cart-btn" title="أضف إلى السلة"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-img-box">
+                    <img src="Heemol ESP32 S3 N16R8 DevKitC-1 Module, für ESP32 S3 Entwicklung Boards mit WiFi, Bluetooth 5_0 für Arduino,USB C Anschließbare - 1 Stück.jpg" alt="ESP32">
+                </div>
+                <div class="card-info">
+                    <h3>ESP32 Development Node Board</h3>
+                    <p class="product-category">IoT Boards</p>
+                    <div class="card-footer-flex">
+                        <span class="price">2,200 DA</span>
+                        <button class="add-to-cart-btn" title="أضف إلى السلة"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-img-box">
+                    <img src="HC-SR04 SOUND ULTRASONIC RANGE DISTANCE SENSOR MODULE FOR ARDUINO ULTRANIC SENSOR MODULE 4PINS.jpg" alt="Ultrasonic Sensor">
+                </div>
+                <div class="card-info">
+                    <h3>Ultrasonic Sensor HC-SR04</h3>
+                    <p class="product-category">Sensors</p>
+                    <div class="card-footer-flex">
+                        <span class="price">650 DA</span>
+                        <button class="add-to-cart-btn" title="أضف إلى السلة"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-img-box">
+                    <img src="Sensor de presença hc-sr501.jpg" alt="PIR Sensor">
+                </div>
+                <div class="card-info">
+                    <h3>PIR Motion Sensor HC-SR501</h3>
+                    <p class="product-category">Sensors</p>
+                    <div class="card-footer-flex">
+                        <span class="price">550 DA</span>
+                        <button class="add-to-cart-btn" title="أضف إلى السلة"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-img-box">
+                    <img src="DHT11 Temperature-Humidity Sensor.jpg" alt="DHT11">
+                </div>
+                <div class="card-info">
+                    <h3>DHT11 Temperature & Humidity Module</h3>
+                    <p class="product-category">Sensors</p>
+                    <div class="card-footer-flex">
+                        <span class="price">450 DA</span>
+                        <button class="add-to-cart-btn" title="أضف إلى السلة"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-img-box">
+                    <img src="L298N Motor Driver Module Dual DC Stepper Motor Controller L298N DC Motor Drivers for Arduino Smart.jpg" alt="L298N">
+                </div>
+                <div class="card-info">
+                    <h3>L298N Dual H-Bridge Motor Driver</h3>
+                    <p class="product-category">Drivers</p>
+                    <div class="card-footer-flex">
+                        <span class="price">950 DA</span>
+                        <button class="add-to-cart-btn" title="أضف إلى السلة"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-img-box">
+                    <img src="SG90 9G Servo Motor 180 Rotation Angle Weight 9g Degree Servo Motor For Mini Helicopter.jpg" alt="SG90 Servo">
+                </div>
+                <div class="card-info">
+                    <h3>SG90 Mini Servo Motor 9g</h3>
+                    <p class="product-category">Motors</p>
+                    <div class="card-footer-flex">
+                        <span class="price">480 DA</span>
+                        <button class="add-to-cart-btn" title="أضف إلى السلة"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-img-box">
+                    <img src="Aokin LCD1602 1602 LCD Module Blue Screen 16x2 Character LCD Display with IIC I2C Serial Interface.jpg" alt="LCD 16x2">
+                </div>
+                <div class="card-info">
+                    <h3>LCD 16x2 Display Blue with I2C Module</h3>
+                    <p class="product-category">Displays</p>
+                    <div class="card-footer-flex">
+                        <span class="price">1,200 DA</span>
+                        <button class="add-to-cart-btn" title="أضف إلى السلة"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-img-box">
+                    <img src="0_96inch OLED (A).jpg" alt="OLED 0.96">
+                </div>
+                <div class="card-info">
+                    <h3>OLED 0.96 inch SSD1306 Display</h3>
+                    <p class="product-category">Displays</p>
+                    <div class="card-footer-flex">
+                        <span class="price">1,400 DA</span>
+                        <button class="add-to-cart-btn" title="أضf إلى السلة"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-img-box">
+                    <img src="Arduino RFID RC522 Card Reader Detector Module Kit.jpg" alt="RFID RC522">
+                </div>
+                <div class="card-info">
+                    <h3>RFID RC522 Smart Card Reader Kit</h3>
+                    <p class="product-category">Modules</p>
+                    <div class="card-footer-flex">
+                        <span class="price">850 DA</span>
+                        <button class="add-to-cart-btn" title="أضف إلى السلة"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-img-box">
+                    <img src="nRF24L01 2_4G Wireless Transceiver Module.jpg" alt="NRF24L01">
+                </div>
+                <div class="card-info">
+                    <h3>NRF24L01 2.4GHz Wireless Module</h3>
+                    <p class="product-category">Wireless</p>
+                    <div class="card-footer-flex">
+                        <span class="price">600 DA</span>
+                        <button class="add-to-cart-btn" title="أضف إلى السلة"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-img-box">
+                    <img src="Modulo rele 1 canal.jpg" alt="Relay 1Ch">
+                </div>
+                <div class="card-info">
+                    <h3>5V Relay Module 1-Channel For Arduino</h3>
+                    <p class="product-category">Modules</p>
+                    <div class="card-footer-flex">
+                        <span class="price">400 DA</span>
+                        <button class="add-to-cart-btn" title="أضف إلى السلة"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-img-box">
+                    <img src="WINGONEER® Tiny DS3231 AT24C32 I2C Module Precision Real Time Clock Module For Arduino.jpg" alt="RTC DS3231">
+                </div>
+                <div class="card-info">
+                    <h3>RTC DS3231 High Precision Clock</h3>
+                    <p class="product-category">Modules</p>
+                    <div class="card-footer-flex">
+                        <span class="price">750 DA</span>
+                        <button class="add-to-cart-btn" title="أضف إلى السلة"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-img-box">
+                    <img src="Microphone Sound Sensor Voice Detection Module with Digital and Analog Out, for Diy, Projects.jpg" alt="Sound Sensor">
+                </div>
+                <div class="card-info">
+                    <h3>Microphone Sound Sensor Module</h3>
+                    <p class="product-category">Sensors</p>
+                    <div class="card-footer-flex">
+                        <span class="price">350 DA</span>
+                        <button class="add-to-cart-btn" title="أضف إلى السلة"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-img-box">
+                    <img src="Maghihiwalay na PCB raindrop level detection water rise rain drop sensor board module.jpg" alt="Rain Sensor">
+                </div>
+                <div class="card-info">
+                    <h3>Rain Drops Detection Water Sensor</h3>
+                    <p class="product-category">Sensors</p>
+                    <div class="card-footer-flex">
+                        <span class="price">450 DA</span>
+                        <button class="add-to-cart-btn" title="أضف إلى السلة"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-img-box">
+                    <img src="Mb102 Breadboard Power Supply Board Module 3_3v 5V Dual Voltage for Arduino, Size_53 mm x 32 mm.jpg" alt="MB102">
+                </div>
+                <div class="card-info">
+                    <h3>MB102 Power Supply Module 3.3V/5V</h3>
+                    <p class="product-category">Power</p>
+                    <div class="card-footer-flex">
+                        <span class="price">500 DA</span>
+                        <button class="add-to-cart-btn" title="أضف إلى السلة"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-img-box">
+                    <img src="Breadboard 830 Point Solderless PCB Bread Board MB-102 MB102 Test Develop DIY.jpg" alt="Breadboard">
+                </div>
+                <div class="card-info">
+                    <h3>Solderless Breadboard 830 Points</h3>
+                    <p class="product-category">Accessories</p>
+                    <div class="card-footer-flex">
+                        <span class="price">650 DA</span>
+                        <button class="add-to-cart-btn" title="أضف إلى السلة"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-img-box">
+                    <img src="40pcs=1lot 10cm 2_54mm 1pin Male to Male jumper wire Dupont cable - AliExpress 13.jpg" alt="Jumper Wires">
+                </div>
+                <div class="card-info">
+                    <h3>Male-to-Male Jumper Wires 20cm</h3>
+                    <p class="product-category">Accessories</p>
+                    <div class="card-footer-flex">
+                        <span class="price">350 DA</span>
+                        <button class="add-to-cart-btn" title="أضف إلى السلة"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-img-box">
+                    <img src="Smart IR Remote Control Sensor Module (HX1838) - Wireless Infrared Receiver Kit for Arduino and Home.jpg" alt="IR Kit">
+                </div>
+                <div class="card-info">
+                    <h3>IR Remote Receiver Controller Kit</h3>
+                    <p class="product-category">Modules</p>
+                    <div class="card-footer-flex">
+                        <span class="price">550 DA</span>
+                        <button class="add-to-cart-btn" title="أضف إلى السلة"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-img-box">
+                    <img src="966889 - KEYPAD MEMBRANE 4X4 MATRIX EXTERNAL EXPANSION CONTROL BOARD - Newegg_com.jpg" alt="Keypad">
+                </div>
+                <div class="card-info">
+                    <h3>4x4 Matrix Membrane Keypad</h3>
+                    <p class="product-category">Accessories</p>
+                    <div class="card-footer-flex">
+                        <span class="price">450 DA</span>
+                        <button class="add-to-cart-btn" title="أضف إلى السلة"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    
+    <!-- الفوتر السفلي الثابت والموحد -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            
+            <div class="footer-box text-box">
+                <h3 data-i18n="footer_about_title">أردوينو ستور</h3>
+                <p data-i18n="footer_about_desc">منصتك الأولى للحصول على أفضل القطع الإلكترونية والمتحكمات الذكية لبناء وتطوير مشاريعك البرمجية بكل سهولة.</p>
+            </div>
+
+            <div class="footer-box links-box">
+                <h3 data-i18n="footer_links_title">روابط سريعة</h3>
+                <ul>
+                    <li><a href="index.html" data-i18n="nav_home">الرئيسية</a></li>
+                    <li><a href="shop.html" data-i18n="footer_link_products">المنتجات</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-box contact-box">
+                <h3 data-i18n="footer_contact_title">تواصل معنا</h3>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:targetchichani@gmail.com">targetchichani@gmail.com</a></p>
+                <p data-i18n="footer_phone"><i class="fas fa-phone-alt"></i> <a href="tel:+213670346089" style="direction: ltr; display: inline-block;">+213 670 34 60 89</a></p>
+                <p><i class="fas fa-headset"></i> <span data-i18n="footer_support">دعم فني متواصل 24/7</span></p>
+            </div>
+
+            <div class="footer-box social-box">
+                <h3 data-i18n="footer_social_title">تابعنا على منصاتنا</h3>
+                <p data-i18n="footer_social_desc">اشترك وماتنساش تتابعنا على حساباتنا الرسمية:</p>
+                <div class="social-icons">
+                    <a href="https://www.youtube.com/@ChichaniTarget" target="_blank" class="icon-yt" title="Chichani Target على يوتيوب"><i class="fab fa-youtube"></i></a>
+                    <a href="https://t.me/chichani_8" target="_blank" class="icon-tg" title="تيليجرام"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="https://www.instagram.com/7essism" target="_blank" class="icon-ig" title="7essism على إنستغرام"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1FkNJqn9LR/" target="_blank" class="icon-fb" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                    <a href="mailto:targetchichani@gmail.com" target="_blank" class="gmail-neon-link">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail" class="gmail-neon-icon">
+</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 <span data-i18n="footer_rights">أردوينو ستور - المطور Houssam HK. جميع الحقوق محفوظة.</span></p>
+        </div>
+    </footer>
+
+    <!-- ربط السكريبت الموحد لضمان عمل الترجمة ونظام اللغات في هذه الصفحة أيضاً -->
+    <script src="script.js"></script>
+</body>
+</html>
