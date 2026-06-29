@@ -407,3 +407,38 @@ html[dir="ltr"] .mega-column ul li a:hover {
     opacity: 1;   /* تولي واضحة 100% */
     transform: scale(1.1); 
 }
+/* --- تنسيقات شاشة الهاتف تبدأ هنا --- */
+@media (max-width: 768px) {
+    
+    /* 1. يسقم القائمة الفوقانية (Header) ترجع عمودية */
+    .nav-container {
+        flex-direction: column !important;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .nav-container ul {
+        flex-direction: column !important;
+        gap: 12px;
+        padding: 0;
+    }
+
+    /* 2. إذا عندك أزرار أو عناصر Flexbox متداخلة ترجع وحدة تحت وحدة */
+    nav {
+        display: flex;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 15px !important;
+    }
+
+    /* 3. تصغير العناوين الكبيرة باش ما تخرجش على الشاشة */
+    h1 {
+        font-size: 1.8rem !important;
+    }
+    
+    /* 4. المنتجات تولي تظهر حبة تحت حبة بشكل مريغل */
+    .products-grid {
+        grid-template-columns: 1fr !important;
+        padding: 10px;
+    }
+}
