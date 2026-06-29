@@ -427,81 +427,46 @@ html[dir="ltr"] .mega-column ul li a:hover {
 }
 
 /* ==========================================================================
-   MOBILE RESPONSIVE: يخدم غير في التيليفون (أقل من 768px)
+   CLEAN RESPONSIVE FOR FOOTER & PRODUCTS ONLY (NO NAVBAR TOUCH)
    ========================================================================== */
 @media (max-width: 768px) {
     
-    .main-header-nav {
-        position: static !important;
-        padding: 15px 20px !important;
-    }
-
-    /* اللوغو والزر في سطر واحد مريغل */
-    .nav-container {
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        width: 100% !important;
-    }
-
-    /* إظهار زر الـ 3 خطوط في التيليفون فقط */
-    .menu-toggle-btn {
-        display: block !important;
-    }
-
-    /* كسر الـ inline style تاع الـ PC وتخبئة المنيو في الموبايل */
-    .main-header-nav nav {
-        display: none !important; 
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 20px !important;
-        width: 100% !important;
-        background-color: #ffffff;
-        box-shadow: 0 10px 15px rgba(0,0,0,0.05);
-        padding: 20px 0 !important;
-        margin-top: 15px;
-        border-radius: 12px;
-        border: 1px solid #e2e8f0;
-    }
-
-    /* كي تضغط على الزر، هاد الكلاس يرجعها Flex عمودي */
-    .main-header-nav nav.active {
-        display: flex !important;
-    }
-
-    .nav-menu-list {
-        flex-direction: column !important;
+    /* 1. شبكة المنتجات (الـ Grid) زوج حبات في السطر بانتظام */
+    .products-grid-container {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important;
         gap: 15px !important;
-        width: 100% !important;
-        padding: 0 !important;
+        padding: 0 10px !important;
+    }
+
+    .card-img-box {
+        height: 120px !important;
+    }
+
+    .card-info h3 {
+        font-size: 0.9rem !important;
+        height: 2.6rem !important;
+    }
+
+    /* 2. الـ Footer يرجع عمودي وكل حاجة تاخذ راحتها */
+    .footer-container {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+        text-align: center !important;
+        padding: 40px 15px !important;
+    }
+
+    .footer-box h3::after {
+        right: 50% !important;
+        transform: translateX(50%) !important;
+    }
+
+    .footer-box.contact-box p {
+        display: flex !important;
+        justify-content: center !important;
         align-items: center !important;
     }
 
-    .mega-menu {
-        position: static !important;
-        width: 90% !important;
-        margin: 5px auto 0 auto !important;
-        box-shadow: none !important;
-        background-color: #f7fafc !important;
-        display: none !important;
-    }
-
-    .has-mega-menu:hover .mega-menu {
-        display: block !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-    }
-
-    .lang-switch-btn {
-        margin-right: 0 !important;
-        width: 80% !important;
-        max-width: 200px;
-        text-align: center;
-    }
-
-    .btn-shop-orange {
-        width: 80% !important;
-        max-width: 200px;
-        text-align: center;
+    .social-icons {
+        justify-content: center !important;
     }
 }
