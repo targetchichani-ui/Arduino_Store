@@ -1,3 +1,21 @@
+document.addEventListener("DOMContentLoaded", function() {
+    const menuToggleBtn = document.getElementById("menuToggleBtn");
+    const mainNav = document.getElementById("mainNav");
+
+    if (menuToggleBtn && mainNav) {
+        menuToggleBtn.addEventListener("click", function() {
+            mainNav.classList.toggle("active");
+            
+            // تبديل الأيقونة من 3 خطوط إلى علامة X عند الفتح
+            const icon = menuToggleBtn.querySelector("i");
+            if (mainNav.classList.contains("active")) {
+                icon.className = "fas fa-times";
+            } else {
+                icon.className = "fas fa-bars";
+            }
+        });
+    }
+});
 document.addEventListener("DOMContentLoaded", () => {
   // ==================== 1. نظام اللغات (مضبوط نيشَان ومعالج الألوان) ====================
     const translations = {

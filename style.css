@@ -407,137 +407,105 @@ html[dir="ltr"] .mega-column ul li a:hover {
     opacity: 1;   /* تولي واضحة 100% */
     transform: scale(1.1); 
 }
+/* الزر يكون مخفي دايماً في الـ PC */
+.menu-toggle-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: #2d3748;
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
 /* ==========================================================================
-   PERFECT NAV BAR & LAYOUT FOR MOBILE (max-width: 768px)
+   MOBILE RESPONSIVE WITH HAMBURGER MENU (max-width: 768px)
    ========================================================================== */
 @media (max-width: 768px) {
     
-    /* 1. ضبط الـ Header الرئيسي في الموبايل */
+    /* ضبط الـ Header الرئيسي */
     .main-header-nav {
-        position: static !important; /* ينحي التثبيت باش ما يغطيش على الـ Hero */
+        position: fixed !important; /* يرجع مثبت الفوق قاع بشكل احترافي */
+        top: 0;
+        left: 0;
+        width: 100% !important;
         padding: 15px 20px !important;
-        width: 100% !important;
+        z-index: 1000;
     }
 
-    /* يرجع اللوغو والمحتوى مستفين عمودياً وبيناتهم مسافة مريغلة */
+    /* اللوغو والزر تاع القائمة يجوا في سطر واحد متناسق */
     .nav-container {
-        flex-direction: column !important;
-        gap: 15px !important;
-        align-items: center !important;
-        justify-content: center !important;
-        width: 100% !important;
+        flex-direction: row !important; /* يخليهم في سطر واحد */
+        justify-content: space-between !important;
+        flex-wrap: wrap;
     }
 
-    /* تحويل الـ HTML inline style flex إلى عمودي نقي */
+    /* إظهار زر الـ 3 خطوط في التيليفون برك */
+    .menu-toggle-btn {
+        display: block !important;
+    }
+
+    /* تخبئة القائمة بالكامل في الحالة العادية */
     .nav-container nav {
+        display: none; /* مخفية */
         flex-direction: column !important;
-        gap: 15px !important;
         width: 100% !important;
-        align-items: center !important;
+        background-color: #ffffff;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+        padding: 20px 0;
+        margin-top: 15px;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+        gap: 20px !important;
     }
 
-    /* تنسيق أزرار القائمة (الرئيسية، مجتمع، المشاريع) */
+    /* هاد الكلاس يخدم بالـ JS كي نكليكو على الزر باش تفتح القائمة */
+    .nav-container nav.active {
+        display: flex !important;
+    }
+
+    /* تنسيق عناصر القائمة عمودياً داخل المنيو المفتوح */
     .nav-menu-list {
         flex-direction: column !important;
         gap: 15px !important;
         width: 100% !important;
         padding: 0 !important;
-        align-items: center !important;
     }
 
-    /* إخفاء الـ Mega Menu في الموبايل عشان ما يتداخلش عشوائياً */
+    /* تخبئة الـ Mega Menu داخل الموبايل عشان ما تفسدش المنيو */
     .mega-menu {
-        display: none !important;
         position: static !important;
-        width: 100% !important;
+        width: 90% !important;
+        margin: 5px auto 0 auto !important;
         box-shadow: none !important;
         background-color: #f7fafc !important;
-        border: 1px solid #e2e8f0 !important;
-        border-top: 3px solid var(--primary-color) !important;
-        padding: 10px !important;
-        margin-top: 5px !important;
-    }
-
-    /* يفتح الـ Mega Menu بس كي تضغط أو تحط يدك عليه */
-    .has-mega-menu:hover .mega-menu {
-        display: block !important;
         opacity: 1 !important;
         visibility: visible !important;
         transform: none !important;
+        display: none !important;
     }
 
-    .mega-column ul {
-        align-items: center !important;
+    .has-mega-menu:hover .mega-menu {
+        display: block !important;
     }
 
-    /* تنسيق زر اللغة وزر تسوق باش يجوا بـ قياس متناسق */
+    /* ضبط أزرار اللغة وتسوق */
     .lang-switch-btn {
         margin-right: 0 !important;
-        width: 100% !important;
-        max-width: 200px !important;
-        text-align: center !important;
-        padding: 10px !important;
+        width: 80% !important;
+        max-width: 200px;
+        text-align: center;
     }
 
     .btn-shop-orange {
-        width: 100% !important;
-        max-width: 200px !important;
-        text-align: center !important;
-        padding: 10px !important;
+        width: 80% !important;
+        max-width: 200px;
+        text-align: center;
     }
 
-    /* 2. ضبط الـ Hero Section باش ما تطلعش فوقها الكود */
+    /* زيادة الـ padding للـ Hero باش ما تتغطاش بسبّة الـ Fixed Navbar */
     .hero-section {
+        padding-top: 120px !important;
         min-height: auto !important;
-        padding: 50px 15px !important;
-    }
-
-    .hero-content h1 {
-        font-size: 1.7rem !important;
-        line-height: 1.4 !important;
-    }
-
-    .hero-content p {
-        font-size: 0.95rem !important;
-        margin-bottom: 20px !important;
-    }
-
-    /* 3. شبكة المنتجات (الـ Grid) زوج حبات في السطر متناسقين */
-    .products-grid-container {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important;
-        gap: 15px !important;
-        padding: 0 10px !important;
-    }
-
-    .card-img-box {
-        height: 120px !important;
-    }
-
-    .card-info h3 {
-        font-size: 0.9rem !important;
-        height: 2.6rem !important;
-    }
-
-    /* 4. الـ Footer */
-    .footer-container {
-        grid-template-columns: 1fr !important;
-        gap: 30px !important;
-        text-align: center !important;
-        padding: 40px 15px !important;
-    }
-
-    .footer-box h3::after {
-        right: 50% !important;
-        transform: translateX(50%) !important;
-    }
-
-    .footer-box.contact-box p {
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-    }
-
-    .social-icons {
-        justify-content: center !important;
     }
 }
