@@ -8,11 +8,20 @@ document.addEventListener("DOMContentLoaded", () => {
             nav_community: 'مجتمع <i class="fas fa-chevron-down nav-arrow"></i>',
             nav_projects: 'المشاريع <i class="fas fa-chevron-down nav-arrow"></i>',
             nav_shop: "تسوق",
+            intro_title: 'أردوينو <span style="color: #e67e22;">ستور</span>',
+            intro_desc: "منصتك الأولى للحصول على أفضل القطع الإلكترونية والمتحكمات الذكية لبناء مشاريعك البرمجية بكل سهولة.",
+            intro_btn: "⌄ استمر",
             hero_title: "ابدأ رحلة الابتكار مع أفضل القطع الإلكترونية",
             hero_desc: "نوفر لك لوحات Arduino الأصلي ومكوناتها لتطوير مشاريعك البرمجية بكل سهولة ومن مكان واحد.",
             hero_btn: "تسوّق الآن",
             products_title: "منتجاتنا المتميزة",
-            products_desc: "القطع الإلكترونية متوفرة وقادمة قريباً...",
+            products_desc: "أفضل القطع المختارة لمشاريعك القادمة",
+            products_view_all: "تصفح كل المنتجات",
+            form_title: "راسلنا",
+            form_name: "الاسم",
+            form_email: "البريد الإلكتروني",
+            form_message: "رسالتك",
+            form_submit: "إرسال",
             footer_about_title: "أردوينو ستور",
             footer_about_desc: "منصتك الأولى للحصول على أفضل القطع الإلكترونية والمتحكمات الذكية لبناء وتطوير مشاريعك البرمجية بكل سهولة.",
             footer_links_title: "روابط سريعة",
@@ -41,11 +50,20 @@ document.addEventListener("DOMContentLoaded", () => {
             nav_community: 'Community <i class="fas fa-chevron-down nav-arrow"></i>',
             nav_projects: 'Projects <i class="fas fa-chevron-down nav-arrow"></i>',
             nav_shop: "Shop",
+            intro_title: 'Arduino <span style="color: #e67e22;">Store</span>',
+            intro_desc: "Your premier platform to get the best electronic parts and smart microcontrollers to build your software projects with ease.",
+            intro_btn: "⌄ Continue",
             hero_title: "Start your innovation journey with the best electronic components",
             hero_desc: "We provide original Arduino boards and components to develop your programming projects easily and all in one place.",
             hero_btn: "Shop Now",
             products_title: "Our Featured Products",
-            products_desc: "Electronic components available and coming soon...",
+            products_desc: "The best parts hand-picked for your next project",
+            products_view_all: "Browse All Products",
+            form_title: "Contact Us",
+            form_name: "Name",
+            form_email: "Email",
+            form_message: "Your Message",
+            form_submit: "Send",
             footer_about_title: "Arduino Store",
             footer_about_desc: "Your premier platform to get the best electronic parts and smart microcontrollers to build and develop your software projects with ease.",
             footer_links_title: "Quick Links",
@@ -80,6 +98,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const key = element.getAttribute('data-i18n');
             if (typeof translations !== 'undefined' && translations[lang] && translations[lang][key]) {
                 element.innerHTML = translations[lang][key];
+            }
+        });
+
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+            const key = element.getAttribute('data-i18n-placeholder');
+            if (typeof translations !== 'undefined' && translations[lang] && translations[lang][key]) {
+                element.setAttribute('placeholder', translations[lang][key]);
             }
         });
 
@@ -172,5 +197,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.body.classList.remove('menu-open');
             }
         });
+    }
+
+    // ==================== 4. سكرول ناعم يدوي (يصلح مشكل القفزة المفاجئة فـ Safari) ====================
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', (e) => {
+            const targetId = link.getAttribute('href');
+            if (targetId.length > 1) {
+                const targetEl = document.querySelector(targetId);
+                if (targetEl) {
+                    e.preventDefault();
+                    targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // ملاحظة: ما نبدلوش الـ URL hash هنا عمداً، باش ما يصرى قفزة مفاجئة كي تعاود تكرر الصفحة
+                }
+            }
+        });
+    });
+
+    // إذا كانت الصفحة تحملت وعندها hash فالـ URL (مثلا #main-hero)، نمسحوه باش مايبقاش يأثر على الإعادة
+    if (window.location.hash) {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
     }
 });

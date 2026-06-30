@@ -10,7 +10,16 @@
 </head>
 <body>
 
-   <header class="main-header-nav">
+    <!-- Intro (مستوحى من تصميم Massively) -->
+    <div id="intro">
+        <h1 data-i18n="intro_title">أردوينو <span style="color: var(--cta-color);">ستور</span></h1>
+        <p data-i18n="intro_desc">منصتك الأولى للحصول على أفضل القطع الإلكترونية والمتحكمات الذكية لبناء مشاريعك البرمجية بكل سهولة.</p>
+        <ul class="actions">
+            <li><a href="#main-hero" class="btn-intro-continue" data-i18n="intro_btn">⌄ استمر</a></li>
+        </ul>
+    </div>
+
+   <header class="main-header-nav" id="header">
     <div class="nav-container">
         
         <a href="index.html" class="logo" data-i18n="logo">أردوينو <span>ستور</span></a>
@@ -65,7 +74,7 @@
         </div>
     </header>
 
-    <section class="hero-section">
+    <section class="hero-section" id="main-hero">
         <div class="hero-canvas-bg" id="heroParallaxBg"></div>
         <div class="hero-content">
             <h1 data-i18n="hero_title">ابدأ رحلة الابتكار مع أفضل القطع الإلكترونية</h1>
@@ -74,12 +83,98 @@
         </div>
     </section>
 
-    <section id="products" style="padding: 60px 20px; text-align: center; background-color: #f9f9f9;">
+    <section id="products" style="padding: 80px 20px; text-align: center; background-color: #f9f9f9;">
         <h2 data-i18n="products_title">منتجاتنا المتميزة</h2>
-        <p data-i18n="products_desc">القطع الإلكترونية متوفرة وقادمة قريباً...</p>
+        <p data-i18n="products_desc" style="margin-bottom: 40px;">أفضل القطع المختارة لمشاريعك القادمة</p>
+
+        <div class="products-grid-container" style="margin-top: 20px;">
+            <div class="product-card">
+                <div class="card-img-box">
+                    <img src="https://images.unsplash.com/photo-1603732551658-5fabbafa84eb?w=400&q=80" alt="Arduino Uno R3">
+                </div>
+                <div class="card-info">
+                    <h3>Arduino Uno R3 الأصلي</h3>
+                    <p class="product-category">Microcontrollers</p>
+                    <div class="card-footer-flex">
+                        <span class="price">2,400 DA</span>
+                        <button class="add-to-cart-btn" title="أضف إلى السلة"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-img-box">
+                    <img src="[New Article] Connect an ESP8266 NodeMCU to a….jpg" alt="NodeMCU ESP8266">
+                </div>
+                <div class="card-info">
+                    <h3>NodeMCU ESP8266 V3 WiFi</h3>
+                    <p class="product-category">IoT Boards</p>
+                    <div class="card-footer-flex">
+                        <span class="price">1,500 DA</span>
+                        <button class="add-to-cart-btn" title="أضف إلى السلة"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-img-box">
+                    <img src="HC-SR04 SOUND ULTRASONIC RANGE DISTANCE SENSOR MODULE FOR ARDUINO ULTRANIC SENSOR MODULE 4PINS.jpg" alt="Ultrasonic Sensor">
+                </div>
+                <div class="card-info">
+                    <h3>Ultrasonic Sensor HC-SR04</h3>
+                    <p class="product-category">Sensors</p>
+                    <div class="card-footer-flex">
+                        <span class="price">650 DA</span>
+                        <button class="add-to-cart-btn" title="أضف إلى السلة"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-img-box">
+                    <img src="Breadboard 830 Point Solderless PCB Bread Board MB-102 MB102 Test Develop DIY.jpg" alt="Breadboard">
+                </div>
+                <div class="card-info">
+                    <h3>Solderless Breadboard 830 Points</h3>
+                    <p class="product-category">Accessories</p>
+                    <div class="card-footer-flex">
+                        <span class="price">650 DA</span>
+                        <button class="add-to-cart-btn" title="أضف إلى السلة"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-img-box">
+                    <img src="40pcs=1lot 10cm 2_54mm 1pin Male to Male jumper wire Dupont cable - AliExpress 13.jpg" alt="Jumper Wires">
+                </div>
+                <div class="card-info">
+                    <h3>Male-to-Male Jumper Wires 20cm</h3>
+                    <p class="product-category">Accessories</p>
+                    <div class="card-footer-flex">
+                        <span class="price">350 DA</span>
+                        <button class="add-to-cart-btn" title="أضف إلى السلة"><i class="fas fa-shopping-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ul class="actions" style="margin-top: 50px; list-style: none;">
+            <li><a href="shop.html" class="btn-cta" data-i18n="products_view_all">تصفح كل المنتجات</a></li>
+        </ul>
     </section>
 
     <footer class="main-footer">
+        <form class="footer-contact-form" method="post" action="#">
+            <h3 data-i18n="form_title">راسلنا</h3>
+            <div class="form-fields">
+                <input type="text" name="name" placeholder="الاسم" data-i18n-placeholder="form_name" required>
+                <input type="email" name="email" placeholder="البريد الإلكتروني" data-i18n-placeholder="form_email" required>
+                <textarea name="message" rows="3" placeholder="رسالتك" data-i18n-placeholder="form_message" required></textarea>
+            </div>
+            <button type="submit" class="btn-cta" data-i18n="form_submit">إرسال</button>
+        </form>
+
         <div class="footer-container">
             
             <div class="footer-box text-box">

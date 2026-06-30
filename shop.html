@@ -388,6 +388,16 @@
     
     <!-- الفوتر السفلي الثابت والموحد -->
     <footer class="main-footer">
+        <form class="footer-contact-form" method="post" action="#">
+            <h3 data-i18n="form_title">راسلنا</h3>
+            <div class="form-fields">
+                <input type="text" name="name" placeholder="الاسم" data-i18n-placeholder="form_name" required>
+                <input type="email" name="email" placeholder="البريد الإلكتروني" data-i18n-placeholder="form_email" required>
+                <textarea name="message" rows="3" placeholder="رسالتك" data-i18n-placeholder="form_message" required></textarea>
+            </div>
+            <button type="submit" class="btn-cta" data-i18n="form_submit">إرسال</button>
+        </form>
+
         <div class="footer-container">
             
             <div class="footer-box text-box">
