@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   // ==================== 1. نظام اللغات (مضبوط نيشَان ومعالج الألوان) ====================
     const translations = {
@@ -138,6 +137,39 @@ document.addEventListener("DOMContentLoaded", () => {
             const scrolled = window.scrollY;
             if (scrolled <= hero.offsetHeight) {
                 hero.style.backgroundPosition = `center ${scrolled * 0.4}px`;
+            }
+        });
+    }
+
+    // ==================== 3. قائمة الموبايل (Hamburger Menu) ====================
+    const menuToggleBtn = document.getElementById('menuToggleBtn');
+    const mainNav = document.getElementById('mainNav');
+
+    if (menuToggleBtn && mainNav) {
+        menuToggleBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+        });
+
+        // فتح/سد القوائم الفرعية (مجتمع / المشاريع) بالضغط بدل الـ hover فالموبايل
+        document.querySelectorAll('.has-mega-menu > a').forEach((link) => {
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 900) {
+                    e.preventDefault();
+                    link.parentElement.classList.toggle('open');
+                }
+            });
+        });
+
+        // سد القائمة كي تضغط برا منها
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 900 &&
+                mainNav.classList.contains('active') &&
+                !mainNav.contains(e.target) &&
+                e.target !== menuToggleBtn &&
+                !menuToggleBtn.contains(e.target)) {
+                mainNav.classList.remove('active');
+                document.body.classList.remove('menu-open');
             }
         });
     }

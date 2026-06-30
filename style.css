@@ -470,3 +470,105 @@ html[dir="ltr"] .mega-column ul li a:hover {
         justify-content: center !important;
     }
 }
+
+/* ==========================================================================
+   MOBILE NAVBAR (HAMBURGER MENU) - PC NOT TOUCHED
+   ========================================================================== */
+@media (max-width: 900px) {
+
+    .menu-toggle-btn {
+        display: block !important;
+        order: 2;
+    }
+
+    .nav-container {
+        flex-wrap: wrap;
+    }
+
+    #mainNav {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 280px;
+        max-width: 80%;
+        height: 100vh;
+        background-color: #ffffff;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 90px 20px 30px 20px;
+        box-shadow: -8px 0 25px rgba(0,0,0,0.15);
+        transition: right 0.3s ease-in-out;
+        z-index: 999;
+        overflow-y: auto;
+    }
+
+    #mainNav.active {
+        right: 0;
+    }
+
+    .nav-menu-list {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 22px;
+        width: 100%;
+    }
+
+    .has-mega-menu {
+        width: 100%;
+    }
+
+    .mega-menu {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 12px 0 0 15px;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        border-top: none;
+        border-right: 2px solid var(--primary-color);
+    }
+
+    .has-mega-menu.open .mega-menu {
+        max-height: 300px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+
+    .lang-switch-btn {
+        margin: 25px 0 0 0;
+    }
+
+    /* خلفية شفافة كي القائمة مفتوحة */
+    body.menu-open::after {
+        content: '';
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.4);
+        z-index: 998;
+    }
+}
+
+html[dir="ltr"] #mainNav {
+    right: auto;
+    left: -300px;
+    transition: left 0.3s ease-in-out;
+}
+
+html[dir="ltr"] #mainNav.active {
+    left: 0;
+    right: auto;
+}
+
+@media (max-width: 900px) {
+    html[dir="ltr"] .mega-menu {
+        border-right: none;
+        border-left: 2px solid var(--primary-color);
+        padding: 12px 15px 0 0;
+    }
+}
