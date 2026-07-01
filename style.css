@@ -1258,6 +1258,18 @@ html.dark-mode .mega-column ul li a {
     color: #cbd5e0 !important;
 }
 
+/* تقوية خاصة بقائمة المجتمع/المشاريع (Mega Menu) باش تولي كحلة فالوضع الليلي
+   بلا ما تتأثر بأي تعارض CSS آخر */
+html.dark-mode .mega-menu {
+    background-color: #17212b !important;
+    border-top-color: var(--primary-color) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+html.dark-mode .mega-column ul li a i {
+    color: var(--light-color) !important;
+}
+
 html.dark-mode .filter-chip {
     color: #cbd5e0;
 }
