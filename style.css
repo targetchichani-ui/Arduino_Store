@@ -906,6 +906,113 @@ body.cart-open { overflow: hidden; }
     .cart-drawer { max-width: 100%; }
 }
 
+/* ==================== نظام المفضلة (Wishlist) ==================== */
+.wishlist-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 5;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    color: #c0392b;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+}
+
+html[dir="ltr"] .wishlist-btn {
+    left: auto;
+    right: 10px;
+}
+
+.wishlist-btn:hover {
+    transform: scale(1.12);
+}
+
+.wishlist-btn.active {
+    color: #fff;
+    background: #e74c3c;
+}
+
+.wishlist-btn.active i,
+.product-detail-wishlist-btn.active i {
+    animation: wishlistPop 0.3s ease;
+}
+
+@keyframes wishlistPop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.35); }
+    100% { transform: scale(1); }
+}
+
+.product-detail-wishlist-btn {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    color: #c0392b;
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all 0.2s ease;
+}
+
+.product-detail-wishlist-btn:hover {
+    transform: scale(1.06);
+}
+
+.product-detail-wishlist-btn.active {
+    background: #e74c3c;
+    color: #fff;
+    border-color: #e74c3c;
+}
+
+.wishlist-item-actions {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.wishlist-item-move-btn {
+    background: var(--cta-color);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: background 0.2s ease;
+}
+
+.wishlist-item-move-btn:hover {
+    background: #cf6e1b;
+}
+
+html.dark-mode .wishlist-btn {
+    background: rgba(23, 33, 43, 0.9);
+    color: #e74c3c;
+}
+
+html.dark-mode .product-detail-wishlist-btn {
+    background: #17212b;
+    border-color: #2a3744;
+    color: #e74c3c;
+}
+
 /* ==================== روابط بطاقات المنتجات (تفاصيل المنتج) ==================== */
 .product-link, .product-link-title {
     text-decoration: none;

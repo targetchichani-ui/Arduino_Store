@@ -63,6 +63,54 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // ==================== زر المفضلة (Wishlist) فصفحة تفاصيل المنتج ====================
+    const WISHLIST_KEY = 'arduinoStoreWishlist';
+    const pdWishlistBtn = document.getElementById('pdWishlistBtn');
+
+    function getWishlistPD() {
+        try {
+            return JSON.parse(localStorage.getItem(WISHLIST_KEY)) || [];
+        } catch (e) {
+            return [];
+        }
+    }
+
+    function syncWishlistBtnPD() {
+        if (!pdWishlistBtn) return;
+        const list = getWishlistPD();
+        const active = list.some(item => item.id === product.id);
+        pdWishlistBtn.classList.toggle('active', active);
+        const icon = pdWishlistBtn.querySelector('i');
+        if (icon) {
+            icon.classList.toggle('far', !active);
+            icon.classList.toggle('fas', active);
+        }
+    }
+
+    if (pdWishlistBtn) {
+        pdWishlistBtn.dataset.id = product.id;
+        pdWishlistBtn.dataset.name = product.name;
+        pdWishlistBtn.dataset.price = product.price;
+        pdWishlistBtn.dataset.img = product.img;
+
+        syncWishlistBtnPD();
+
+        pdWishlistBtn.addEventListener('click', () => {
+            let list = getWishlistPD();
+            const existingIndex = list.findIndex(item => item.id === product.id);
+            if (existingIndex > -1) {
+                list.splice(existingIndex, 1);
+            } else {
+                list.push({ id: product.id, name: product.name, price: product.price, img: product.img });
+            }
+            localStorage.setItem(WISHLIST_KEY, JSON.stringify(list));
+            syncWishlistBtnPD();
+
+            // نطلق حدث خاص باش سكريبت المفضلة (لي فـ script.js) يعاود يرسم الدرج والعداد
+            window.dispatchEvent(new CustomEvent('wishlistUpdated'));
+        });
+    }
+
     if (addToCartBtn) {
         addToCartBtn.addEventListener('click', () => {
             const CART_KEY = 'arduinoStoreCart';

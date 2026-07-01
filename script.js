@@ -75,6 +75,8 @@ document.addEventListener("DOMContentLoaded", () => {
             cart_empty: "السلة فارغة حالياً",
             cart_total: "المجموع",
             cart_checkout: "إتمام الطلب عبر واتساب",
+            wishlist_title: "المفضلة",
+            wishlist_empty: "لائحة المفضلة فارغة حالياً",
             search_placeholder: "ابحث عن منتج...",
             filter_all: "الكل",
             no_results: "ماكاينش نتائج مطابقة",
@@ -131,6 +133,8 @@ document.addEventListener("DOMContentLoaded", () => {
             cart_empty: "Your cart is empty",
             cart_total: "Total",
             cart_checkout: "Checkout via WhatsApp",
+            wishlist_title: "Wishlist",
+            wishlist_empty: "Your wishlist is empty",
             search_placeholder: "Search for a product...",
             filter_all: "All",
             no_results: "No matching products found",
@@ -400,6 +404,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function openCart() {
         if (!cartDrawer || !cartOverlay) return;
+        if (typeof closeWishlist === 'function') closeWishlist();
         cartDrawer.classList.add('active');
         cartOverlay.classList.add('active');
         document.body.classList.add('cart-open');
@@ -461,6 +466,163 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // الاستماع لتحديثات السلة الجاية من صفحات أخرى (بحال product-detail.js)
     window.addEventListener('cartUpdated', renderCart);
+
+    // ==================== 5.5. نظام المفضلة (Wishlist) ====================
+    const WISHLIST_KEY = 'arduinoStoreWishlist';
+
+    function getWishlist() {
+        try {
+            return JSON.parse(localStorage.getItem(WISHLIST_KEY)) || [];
+        } catch (e) {
+            return [];
+        }
+    }
+
+    function saveWishlist(list) {
+        localStorage.setItem(WISHLIST_KEY, JSON.stringify(list));
+    }
+
+    function bumpWishlistBadge() {
+        const badge = document.getElementById('wishlistCount');
+        if (!badge) return;
+        badge.classList.add('bump');
+        setTimeout(() => badge.classList.remove('bump'), 200);
+    }
+
+    // يزيد المنتج للمفضلة إلى ماكانش، ويحذفه إلى كان موجود
+    function toggleWishlistItem(product) {
+        let list = getWishlist();
+        const existingIndex = list.findIndex(item => item.id === product.id);
+        if (existingIndex > -1) {
+            list.splice(existingIndex, 1);
+        } else {
+            list.push(product);
+        }
+        saveWishlist(list);
+        renderWishlist();
+        syncWishlistButtons();
+        bumpWishlistBadge();
+    }
+
+    // يحدث شكل كل أزرار القلب (فـ البطاقات وصفحة التفاصيل) حسب حالة المفضلة الحالية
+    function syncWishlistButtons() {
+        const list = getWishlist();
+        document.querySelectorAll('.wishlist-btn, .product-detail-wishlist-btn').forEach(btn => {
+            const id = btn.dataset.id;
+            if (!id) return;
+            const active = list.some(item => item.id === id);
+            btn.classList.toggle('active', active);
+            const icon = btn.querySelector('i');
+            if (icon) {
+                icon.classList.toggle('far', !active);
+                icon.classList.toggle('fas', active);
+            }
+        });
+    }
+
+    function removeFromWishlist(id) {
+        let list = getWishlist();
+        list = list.filter(item => item.id !== id);
+        saveWishlist(list);
+        renderWishlist();
+        syncWishlistButtons();
+    }
+
+    function renderWishlist() {
+        const list = getWishlist();
+        const countEl = document.getElementById('wishlistCount');
+        const itemsContainer = document.getElementById('wishlistItemsContainer');
+        if (!countEl || !itemsContainer) return;
+
+        countEl.textContent = list.length;
+
+        if (list.length === 0) {
+            const emptyText = (currentLang === 'ar') ? 'لائحة المفضلة فارغة حالياً' : 'Your wishlist is empty';
+            itemsContainer.innerHTML = `<p class="cart-empty-msg">${emptyText}</p>`;
+            return;
+        }
+
+        const moveText = (currentLang === 'ar') ? 'أضف للسلة' : 'Add to cart';
+
+        itemsContainer.innerHTML = list.map(item => `
+            <div class="cart-item" data-id="${item.id}">
+                <img src="${item.img}" alt="${item.name}">
+                <div class="cart-item-info">
+                    <h4>${item.name}</h4>
+                    <div class="cart-item-price">${formatPrice(item.price)}</div>
+                    <div class="wishlist-item-actions">
+                        <button class="wishlist-item-move-btn" data-id="${item.id}"><i class="fas fa-cart-plus"></i> ${moveText}</button>
+                    </div>
+                </div>
+                <button class="cart-item-remove wishlist-item-remove" data-id="${item.id}" title="حذف"><i class="fas fa-trash"></i></button>
+            </div>
+        `).join('');
+    }
+
+    // ربط أزرار القلب فـ كل بطاقات المنتجات (index.html و shop.html)
+    document.querySelectorAll('.wishlist-btn, .product-detail-wishlist-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const { id, name, price, img } = btn.dataset;
+            if (!id) return;
+            toggleWishlistItem({ id, name, price: parseInt(price, 10) || 0, img });
+        });
+    });
+
+    // فتح/غلق درج المفضلة
+    const wishlistToggleBtn = document.getElementById('wishlistToggleBtn');
+    const wishlistDrawer = document.getElementById('wishlistDrawer');
+    const wishlistOverlay = document.getElementById('wishlistOverlay');
+    const wishlistCloseBtn = document.getElementById('wishlistCloseBtn');
+
+    function openWishlist() {
+        if (!wishlistDrawer || !wishlistOverlay) return;
+        closeCart();
+        wishlistDrawer.classList.add('active');
+        wishlistOverlay.classList.add('active');
+        document.body.classList.add('cart-open');
+    }
+
+    function closeWishlist() {
+        if (!wishlistDrawer || !wishlistOverlay) return;
+        wishlistDrawer.classList.remove('active');
+        wishlistOverlay.classList.remove('active');
+        document.body.classList.remove('cart-open');
+    }
+
+    if (wishlistToggleBtn) wishlistToggleBtn.addEventListener('click', openWishlist);
+    if (wishlistCloseBtn) wishlistCloseBtn.addEventListener('click', closeWishlist);
+    if (wishlistOverlay) wishlistOverlay.addEventListener('click', closeWishlist);
+
+    // أزرار "أضف للسلة" و"حذف" جوا درج المفضلة (event delegation)
+    const wishlistItemsContainer = document.getElementById('wishlistItemsContainer');
+    if (wishlistItemsContainer) {
+        wishlistItemsContainer.addEventListener('click', (e) => {
+            const moveBtn = e.target.closest('.wishlist-item-move-btn');
+            const removeBtn = e.target.closest('.wishlist-item-remove');
+
+            if (moveBtn) {
+                const id = moveBtn.dataset.id;
+                const item = getWishlist().find(i => i.id === id);
+                if (item) {
+                    addToCart({ id: item.id, name: item.name, price: item.price, img: item.img });
+                    removeFromWishlist(id);
+                }
+            }
+            if (removeBtn) removeFromWishlist(removeBtn.dataset.id);
+        });
+    }
+
+    // عرض المفضلة عند تحميل الصفحة
+    renderWishlist();
+    syncWishlistButtons();
+
+    // الاستماع لتحديثات المفضلة الجاية من صفحات أخرى (بحال product-detail.js)
+    window.addEventListener('wishlistUpdated', () => {
+        renderWishlist();
+        syncWishlistButtons();
+    });
 
     // ==================== 6. البحث والفلترة (فقط فـ shop.html) ====================
     const productsGrid = document.getElementById('productsGrid');

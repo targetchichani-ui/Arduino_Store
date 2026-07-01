@@ -31,6 +31,11 @@
             <span id="cartCount" class="cart-count-badge">0</span>
         </button>
 
+        <button id="wishlistToggleBtn" class="wishlist-toggle-btn cart-toggle-btn" aria-label="قائمة المفضلة">
+            <i class="fas fa-heart"></i>
+            <span id="wishlistCount" class="wishlist-count-badge cart-count-badge">0</span>
+        </button>
+
         <button id="menuToggleBtn" class="menu-toggle-btn" aria-label="فتح القائمة"><i class="fas fa-bars"></i></button>
 
         <nav id="mainNav">
@@ -114,9 +119,14 @@
                         </div>
                     </div>
 
-                    <button id="pdAddToCartBtn" class="btn-cta product-detail-add-btn">
-                        <i class="fas fa-shopping-cart"></i> <span data-i18n="add_to_cart">أضف إلى السلة</span>
-                    </button>
+                    <div style="display:flex; align-items:stretch; gap:10px;">
+                        <button id="pdAddToCartBtn" class="btn-cta product-detail-add-btn" style="flex:1;">
+                            <i class="fas fa-shopping-cart"></i> <span data-i18n="add_to_cart">أضف إلى السلة</span>
+                        </button>
+                        <button id="pdWishlistBtn" class="product-detail-wishlist-btn" title="أضف إلى المفضلة">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
 
                     <div class="product-detail-trust">
                         <p><i class="fas fa-truck"></i> <span data-i18n="trust_delivery">توصيل لكل الولايات</span></p>
@@ -190,6 +200,18 @@
 
     <!-- سلة المشتريات -->
     <div id="cartOverlay" class="cart-overlay"></div>
+    <!-- قائمة المفضلة -->
+    <div id="wishlistOverlay" class="wishlist-overlay cart-overlay"></div>
+    <aside id="wishlistDrawer" class="wishlist-drawer cart-drawer">
+        <div class="cart-drawer-header">
+            <h3 data-i18n="wishlist_title">المفضلة</h3>
+            <button id="wishlistCloseBtn" class="cart-close-btn" aria-label="إغلاق">&times;</button>
+        </div>
+        <div id="wishlistItemsContainer" class="cart-items-container">
+            <p class="cart-empty-msg" data-i18n="wishlist_empty">لائحة المفضلة فارغة حالياً</p>
+        </div>
+    </aside>
+
     <aside id="cartDrawer" class="cart-drawer">
         <div class="cart-drawer-header">
             <h3 data-i18n="cart_title">سلة المشتريات</h3>
