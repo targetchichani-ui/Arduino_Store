@@ -1301,3 +1301,14 @@ html.dark-mode .nav-arrow {
 html.dark-mode .product-detail-info .product-category {
     background: #1e2937;
 }
+
+/* قسم "منتجاتنا المتميزة" فيه خلفية فاتحة مكتوبة Inline فالـ HTML (#f9f9f9)
+   لازم !important باش نتخطاوها فالوضع الليلي */
+html.dark-mode #products {
+    background-color: #0f1720 !important;
+}
+
+html.dark-mode #products h2,
+html.dark-mode #products p {
+    color: #e6edf3;
+}
