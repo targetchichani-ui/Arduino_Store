@@ -2,6 +2,8 @@
 const PRODUCTS_DATA = [
   {
     "id": "arduino-uno-r3",
+    "rating": 4.8,
+    "reviewCount": 132,
     "name": "Arduino Uno R3 الأصلي",
     "price": 2400,
     "category": "Microcontrollers",
@@ -11,6 +13,8 @@ const PRODUCTS_DATA = [
   },
   {
     "id": "arduino-mega-2560-r3",
+    "rating": 4.7,
+    "reviewCount": 64,
     "name": "Arduino Mega 2560 R3",
     "price": 3800,
     "category": "Microcontrollers",
@@ -20,6 +24,8 @@ const PRODUCTS_DATA = [
   },
   {
     "id": "nodemcu-esp8266-v3-wifi",
+    "rating": 4.6,
+    "reviewCount": 98,
     "name": "NodeMCU ESP8266 V3 WiFi",
     "price": 1500,
     "category": "IoT Boards",
@@ -29,6 +35,8 @@ const PRODUCTS_DATA = [
   },
   {
     "id": "esp32-development-node-board",
+    "rating": 4.7,
+    "reviewCount": 77,
     "name": "ESP32 Development Node Board",
     "price": 2200,
     "category": "IoT Boards",
@@ -38,6 +46,8 @@ const PRODUCTS_DATA = [
   },
   {
     "id": "ultrasonic-sensor-hc-sr04",
+    "rating": 4.5,
+    "reviewCount": 145,
     "name": "Ultrasonic Sensor HC-SR04",
     "price": 650,
     "category": "Sensors",
@@ -47,6 +57,8 @@ const PRODUCTS_DATA = [
   },
   {
     "id": "pir-motion-sensor-hc-sr501",
+    "rating": 4.3,
+    "reviewCount": 52,
     "name": "PIR Motion Sensor HC-SR501",
     "price": 550,
     "category": "Sensors",
@@ -56,6 +68,8 @@ const PRODUCTS_DATA = [
   },
   {
     "id": "dht11-temperature-humidity-module",
+    "rating": 4.4,
+    "reviewCount": 89,
     "name": "DHT11 Temperature & Humidity Module",
     "price": 450,
     "category": "Sensors",
@@ -65,6 +79,8 @@ const PRODUCTS_DATA = [
   },
   {
     "id": "l298n-dual-h-bridge-motor-driver",
+    "rating": 4.6,
+    "reviewCount": 41,
     "name": "L298N Dual H-Bridge Motor Driver",
     "price": 950,
     "category": "Drivers",
@@ -74,6 +90,8 @@ const PRODUCTS_DATA = [
   },
   {
     "id": "sg90-mini-servo-motor-9g",
+    "rating": 4.2,
+    "reviewCount": 36,
     "name": "SG90 Mini Servo Motor 9g",
     "price": 480,
     "category": "Motors",
@@ -83,6 +101,8 @@ const PRODUCTS_DATA = [
   },
   {
     "id": "lcd-16x2-display-blue-with-i2c-module",
+    "rating": 4.7,
+    "reviewCount": 58,
     "name": "LCD 16x2 Display Blue with I2C Module",
     "price": 1200,
     "category": "Displays",
@@ -92,6 +112,8 @@ const PRODUCTS_DATA = [
   },
   {
     "id": "oled-0-96-inch-ssd1306-display",
+    "rating": 4.6,
+    "reviewCount": 47,
     "name": "OLED 0.96 inch SSD1306 Display",
     "price": 1400,
     "category": "Displays",
@@ -101,6 +123,8 @@ const PRODUCTS_DATA = [
   },
   {
     "id": "rfid-rc522-smart-card-reader-kit",
+    "rating": 4.4,
+    "reviewCount": 33,
     "name": "RFID RC522 Smart Card Reader Kit",
     "price": 850,
     "category": "Modules",
@@ -110,6 +134,8 @@ const PRODUCTS_DATA = [
   },
   {
     "id": "nrf24l01-2-4ghz-wireless-module",
+    "rating": 4.3,
+    "reviewCount": 29,
     "name": "NRF24L01 2.4GHz Wireless Module",
     "price": 600,
     "category": "Wireless",
@@ -119,6 +145,8 @@ const PRODUCTS_DATA = [
   },
   {
     "id": "5v-relay-module-1-channel-for-arduino",
+    "rating": 4.5,
+    "reviewCount": 61,
     "name": "5V Relay Module 1-Channel For Arduino",
     "price": 400,
     "category": "Modules",
@@ -128,6 +156,8 @@ const PRODUCTS_DATA = [
   },
   {
     "id": "rtc-ds3231-high-precision-clock",
+    "rating": 4.6,
+    "reviewCount": 27,
     "name": "RTC DS3231 High Precision Clock",
     "price": 750,
     "category": "Modules",
@@ -137,6 +167,8 @@ const PRODUCTS_DATA = [
   },
   {
     "id": "microphone-sound-sensor-module",
+    "rating": 4.1,
+    "reviewCount": 18,
     "name": "Microphone Sound Sensor Module",
     "price": 350,
     "category": "Sensors",
@@ -146,6 +178,8 @@ const PRODUCTS_DATA = [
   },
   {
     "id": "rain-drops-detection-water-sensor",
+    "rating": 4.2,
+    "reviewCount": 22,
     "name": "Rain Drops Detection Water Sensor",
     "price": 450,
     "category": "Sensors",
@@ -155,6 +189,8 @@ const PRODUCTS_DATA = [
   },
   {
     "id": "mb102-power-supply-module-3-3v-5v",
+    "rating": 4.4,
+    "reviewCount": 39,
     "name": "MB102 Power Supply Module 3.3V/5V",
     "price": 500,
     "category": "Power",
@@ -164,6 +200,8 @@ const PRODUCTS_DATA = [
   },
   {
     "id": "solderless-breadboard-830-points",
+    "rating": 4.8,
+    "reviewCount": 156,
     "name": "Solderless Breadboard 830 Points",
     "price": 650,
     "category": "Accessories",
@@ -173,6 +211,8 @@ const PRODUCTS_DATA = [
   },
   {
     "id": "male-to-male-jumper-wires-20cm",
+    "rating": 4.5,
+    "reviewCount": 210,
     "name": "Male-to-Male Jumper Wires 20cm",
     "price": 350,
     "category": "Accessories",
@@ -182,6 +222,8 @@ const PRODUCTS_DATA = [
   },
   {
     "id": "ir-remote-receiver-controller-kit",
+    "rating": 4.3,
+    "reviewCount": 24,
     "name": "IR Remote Receiver Controller Kit",
     "price": 550,
     "category": "Modules",
@@ -191,6 +233,8 @@ const PRODUCTS_DATA = [
   },
   {
     "id": "4x4-matrix-membrane-keypad",
+    "rating": 4.4,
+    "reviewCount": 19,
     "name": "4x4 Matrix Membrane Keypad",
     "price": 450,
     "category": "Accessories",

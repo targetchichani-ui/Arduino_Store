@@ -86,8 +86,18 @@
     </header>
 
     <main style="padding: 120px 5% 80px 5%; min-height: 80vh; background: var(--bg-color);">
-        <div id="productDetailLoading" style="text-align:center; padding: 60px 0;">
-            <p data-i18n="loading_product">جاري تحميل المنتج...</p>
+        <div id="productDetailLoading" class="pd-skeleton-wrapper">
+            <div class="pd-skeleton-grid">
+                <div class="pd-skeleton-img"></div>
+                <div>
+                    <div class="pd-skeleton-line w-30"></div>
+                    <div class="pd-skeleton-line w-70"></div>
+                    <div class="pd-skeleton-line w-40"></div>
+                    <div class="pd-skeleton-line w-100"></div>
+                    <div class="pd-skeleton-line w-90"></div>
+                    <div class="pd-skeleton-line w-50"></div>
+                </div>
+            </div>
         </div>
 
         <div id="productDetailContent" class="product-detail-wrapper" style="display:none;">
@@ -104,8 +114,8 @@
                     <p class="product-category" id="pdCategory"></p>
                     <h1 id="pdName"></h1>
                     <div class="product-detail-rating" id="pdRating">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                        <span>(4.5)</span>
+                        <span class="stars-display" id="pdRatingStars"></span>
+                        <span id="pdRatingCount">(0)</span>
                     </div>
                     <p class="product-detail-price" id="pdPrice"></p>
                     <p class="product-detail-desc" id="pdDesc"></p>
@@ -131,6 +141,18 @@
                     <div class="product-detail-trust">
                         <p><i class="fas fa-truck"></i> <span data-i18n="trust_delivery">توصيل لكل الولايات</span></p>
                         <p><i class="fas fa-shield-alt"></i> <span data-i18n="trust_warranty">ضمان على المنتج</span></p>
+                    </div>
+
+                    <div class="rate-product-box">
+                        <p data-i18n="rate_this_product">قيّم هذا المنتج</p>
+                        <div class="rate-stars-input" id="pdRateInput">
+                            <i class="far fa-star" data-value="1"></i>
+                            <i class="far fa-star" data-value="2"></i>
+                            <i class="far fa-star" data-value="3"></i>
+                            <i class="far fa-star" data-value="4"></i>
+                            <i class="far fa-star" data-value="5"></i>
+                        </div>
+                        <span class="rate-feedback" id="pdRateFeedback"></span>
                     </div>
                 </div>
             </div>

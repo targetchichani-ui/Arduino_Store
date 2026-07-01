@@ -38,7 +38,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const qtyPlusBtn = document.getElementById('pdQtyPlus');
     const addToCartBtn = document.getElementById('pdAddToCartBtn');
 
-    if (imgEl) { imgEl.src = product.img; imgEl.alt = product.name; }
+    const imgBoxEl = imgEl ? imgEl.closest('.product-detail-img-box') : null;
+    if (imgEl) {
+        imgEl.alt = product.name;
+        if (imgBoxEl) {
+            imgBoxEl.classList.add('img-skeleton');
+            imgEl.addEventListener('load', () => {
+                imgBoxEl.classList.remove('img-skeleton');
+                imgBoxEl.classList.add('img-loaded');
+            });
+            imgEl.addEventListener('error', () => {
+                imgBoxEl.classList.remove('img-skeleton');
+            });
+        }
+        imgEl.src = product.img;
+    }
     if (categoryEl) categoryEl.textContent = product.category;
     if (nameEl) nameEl.textContent = product.name;
     if (priceEl) priceEl.textContent = product.price.toLocaleString('en-US') + ' DA';
@@ -152,5 +166,62 @@ document.addEventListener("DOMContentLoaded", () => {
             addToCartBtn.classList.add('added');
             setTimeout(() => addToCartBtn.classList.remove('added'), 400);
         });
+    }
+
+    // ==================== التقييمات (نجوم حقيقية + عدد المراجعات) ====================
+    const pdRatingStarsEl = document.getElementById('pdRatingStars');
+    const pdRatingCountEl = document.getElementById('pdRatingCount');
+    const pdRateInputEl = document.getElementById('pdRateInput');
+    const pdRateFeedbackEl = document.getElementById('pdRateFeedback');
+
+    function renderProductRating() {
+        if (!window.ArduinoRatings) return;
+        const stats = window.ArduinoRatings.getStats(product);
+
+        if (pdRatingStarsEl) pdRatingStarsEl.innerHTML = window.ArduinoRatings.buildStarsHTML(stats.avg);
+
+        if (pdRatingCountEl) {
+            const currentLang = localStorage.getItem('selectedLanguage') || 'ar';
+            const reviewsLabel = currentLang === 'ar' ? 'تقييم' : 'reviews';
+            pdRatingCountEl.textContent = `${stats.avg.toFixed(1)} (${stats.count} ${reviewsLabel})`;
+        }
+
+        if (pdRateInputEl) {
+            pdRateInputEl.querySelectorAll('i').forEach(star => {
+                const val = parseInt(star.dataset.value, 10);
+                const active = !!stats.userRating && val <= stats.userRating;
+                star.classList.toggle('fas', active);
+                star.classList.toggle('far', !active);
+            });
+        }
+    }
+
+    renderProductRating();
+
+    if (pdRateInputEl) {
+        const starEls = Array.from(pdRateInputEl.querySelectorAll('i'));
+
+        starEls.forEach(star => {
+            star.addEventListener('mouseenter', () => {
+                const hoverVal = parseInt(star.dataset.value, 10);
+                starEls.forEach(s => {
+                    const v = parseInt(s.dataset.value, 10);
+                    s.classList.toggle('fas', v <= hoverVal);
+                    s.classList.toggle('far', v > hoverVal);
+                });
+            });
+
+            star.addEventListener('click', () => {
+                const val = parseInt(star.dataset.value, 10);
+                if (window.ArduinoRatings) window.ArduinoRatings.saveRating(product.id, val);
+                renderProductRating();
+                if (pdRateFeedbackEl) {
+                    const currentLang = localStorage.getItem('selectedLanguage') || 'ar';
+                    pdRateFeedbackEl.textContent = currentLang === 'ar' ? 'شكراً على تقييمك!' : 'Thanks for your rating!';
+                }
+            });
+        });
+
+        pdRateInputEl.addEventListener('mouseleave', renderProductRating);
     }
 });

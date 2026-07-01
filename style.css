@@ -1498,3 +1498,200 @@ html.dark-mode #products p {
     }
     .whatsapp-float-btn i { font-size: 26px; }
 }
+
+/* ==========================================================================
+   نظام التقييمات (Ratings) - نجوم حقيقية + عدد المراجعات
+   ========================================================================== */
+.card-rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 12px;
+    font-size: 12px;
+}
+
+.stars-display i {
+    color: #f4b400;
+    font-size: 12px;
+    margin-left: 1px;
+}
+
+.stars-display i.far {
+    color: #cbd5e0;
+}
+
+.card-rating .rating-count,
+.product-detail-rating #pdRatingCount {
+    color: #888;
+    font-size: 12px;
+}
+
+#pdRatingStars i {
+    font-size: 15px;
+}
+
+/* صندوق "قيّم هذا المنتج" فصفحة تفاصيل المنتج */
+.rate-product-box {
+    margin: 5px 0 22px 0;
+    padding-top: 16px;
+    border-top: 1px dashed #e2e8f0;
+}
+
+.rate-product-box p {
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.rate-stars-input {
+    display: inline-flex;
+    gap: 5px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.rate-stars-input i {
+    color: #cbd5e0;
+    transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.rate-stars-input i.fas {
+    color: #f4b400;
+}
+
+.rate-stars-input i:hover {
+    transform: scale(1.15);
+}
+
+.rate-feedback {
+    display: block;
+    margin-top: 8px;
+    font-size: 12.5px;
+    color: var(--primary-color);
+    font-weight: 600;
+    min-height: 16px;
+}
+
+/* ==========================================================================
+   Skeleton Loading - صور المنتجات (شيمر أثناء التحميل)
+   ========================================================================== */
+.card-img-box.img-skeleton,
+.product-detail-img-box.img-skeleton {
+    position: relative;
+    background: #e9edf1;
+    overflow: hidden;
+}
+
+.card-img-box.img-skeleton::after,
+.product-detail-img-box.img-skeleton::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+    animation: skeleton-shimmer 1.4s infinite;
+}
+
+.card-img-box.img-skeleton img,
+.product-detail-img-box.img-skeleton img {
+    opacity: 0;
+}
+
+.card-img-box.img-loaded img,
+.product-detail-img-box.img-loaded img {
+    opacity: 1;
+    transition: opacity 0.35s ease;
+}
+
+@keyframes skeleton-shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* سكيلتون كامل لصفحة تفاصيل المنتج أثناء التحميل الأولي */
+.pd-skeleton-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.pd-skeleton-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+@media (max-width: 768px) {
+    .pd-skeleton-grid { grid-template-columns: 1fr; gap: 30px; }
+}
+
+.pd-skeleton-img,
+.pd-skeleton-line {
+    position: relative;
+    overflow: hidden;
+    background: #e9edf1;
+    border-radius: 8px;
+}
+
+.pd-skeleton-img {
+    height: 320px;
+    border-radius: 16px;
+}
+
+.pd-skeleton-line {
+    height: 16px;
+    margin-bottom: 14px;
+}
+
+.pd-skeleton-img::after,
+.pd-skeleton-line::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+    animation: skeleton-shimmer 1.4s infinite;
+}
+
+.pd-skeleton-line.w-30 { width: 30%; height: 22px; }
+.pd-skeleton-line.w-70 { width: 70%; height: 26px; }
+.pd-skeleton-line.w-40 { width: 40%; }
+.pd-skeleton-line.w-100 { width: 100%; }
+.pd-skeleton-line.w-90 { width: 90%; }
+.pd-skeleton-line.w-50 {
+    width: 50%;
+    height: 46px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+/* دارك مود - التقييمات والسكيلتون */
+html.dark-mode .card-rating .rating-count,
+html.dark-mode .product-detail-rating #pdRatingCount {
+    color: #9fb0bd;
+}
+
+html.dark-mode .stars-display i.far {
+    color: #3a4a58;
+}
+
+html.dark-mode .rate-product-box {
+    border-top-color: #24313d;
+}
+
+html.dark-mode .rate-product-box p {
+    color: #b8c6d1;
+}
+
+html.dark-mode .rate-stars-input i {
+    color: #3a4a58;
+}
+
+html.dark-mode .rate-stars-input i.fas {
+    color: #f4b400;
+}
+
+html.dark-mode .card-img-box.img-skeleton,
+html.dark-mode .product-detail-img-box.img-skeleton,
+html.dark-mode .pd-skeleton-img,
+html.dark-mode .pd-skeleton-line {
+    background: #1e2937;
+}

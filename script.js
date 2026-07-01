@@ -86,7 +86,10 @@ document.addEventListener("DOMContentLoaded", () => {
             loading_product: "جاري تحميل المنتج...",
             product_not_found: "هاد المنتج ماكاينش",
             trust_delivery: "توصيل لكل الولايات",
-            trust_warranty: "ضمان على المنتج"
+            trust_warranty: "ضمان على المنتج",
+            rate_this_product: "قيّم هذا المنتج",
+            rate_thanks: "شكراً على تقييمك!",
+            reviews_label: "تقييم"
         },
         en: {
             doc_title: "Arduino Store - Houssam HK",
@@ -144,7 +147,10 @@ document.addEventListener("DOMContentLoaded", () => {
             loading_product: "Loading product...",
             product_not_found: "This product doesn't exist",
             trust_delivery: "Delivery to all provinces",
-            trust_warranty: "Product warranty"
+            trust_warranty: "Product warranty",
+            rate_this_product: "Rate this product",
+            rate_thanks: "Thanks for your rating!",
+            reviews_label: "reviews"
         }
     };
 
@@ -712,4 +718,107 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     }
+
+    // ==================== نظام التقييمات (Ratings) - نجوم حقيقية + عدد المراجعات ====================
+    const RATINGS_KEY = 'arduinoStoreUserRatings';
+
+    function getUserRatings() {
+        try {
+            return JSON.parse(localStorage.getItem(RATINGS_KEY)) || {};
+        } catch (e) {
+            return {};
+        }
+    }
+
+    function saveUserRating(productId, value) {
+        const ratings = getUserRatings();
+        ratings[productId] = value;
+        localStorage.setItem(RATINGS_KEY, JSON.stringify(ratings));
+    }
+
+    // يحسب متوسط التقييم وعدد المراجعات، ويدمج تقييم المستخدم الحالي (من هاد الجهاز) إذا كاين
+    function getRatingStats(product) {
+        const baseAvg = product.rating || 4.5;
+        const baseCount = product.reviewCount || 0;
+        const userRating = getUserRatings()[product.id] || null;
+
+        if (!userRating) {
+            return { avg: baseAvg, count: baseCount, userRating: null };
+        }
+
+        const totalCount = baseCount + 1;
+        const avg = ((baseAvg * baseCount) + userRating) / totalCount;
+        return { avg: avg, count: totalCount, userRating: userRating };
+    }
+
+    // يبني HTML لنجوم القراءة فقط (نجمة ممتلئة / نصف نجمة / نجمة فارغة)
+    function buildStarsHTML(avg) {
+        let html = '';
+        const rounded = Math.round(avg * 2) / 2;
+        for (let i = 1; i <= 5; i++) {
+            if (rounded >= i) {
+                html += '<i class="fas fa-star"></i>';
+            } else if (rounded >= i - 0.5) {
+                html += '<i class="fas fa-star-half-alt"></i>';
+            } else {
+                html += '<i class="far fa-star"></i>';
+            }
+        }
+        return html;
+    }
+
+    // نصدرهم للعالم الخارجي باش يستعملهم product-detail.js بلا تكرار للكود
+    window.ArduinoRatings = {
+        getStats: getRatingStats,
+        buildStarsHTML: buildStarsHTML,
+        saveRating: saveUserRating
+    };
+
+    // نزيد شارة التقييم (نجوم + عدد) فكل كارت منتج فالرئيسية وصفحة المتجر
+    function renderCardRatings() {
+        if (typeof PRODUCTS_DATA === 'undefined') return;
+        document.querySelectorAll('.product-card[data-id]').forEach(card => {
+            const product = PRODUCTS_DATA.find(p => p.id === card.dataset.id);
+            if (!product) return;
+
+            const stats = getRatingStats(product);
+            let ratingEl = card.querySelector('.card-rating');
+            if (!ratingEl) {
+                const categoryEl = card.querySelector('.product-category');
+                if (!categoryEl) return;
+                ratingEl = document.createElement('div');
+                ratingEl.className = 'card-rating';
+                categoryEl.insertAdjacentElement('afterend', ratingEl);
+            }
+            ratingEl.innerHTML = `<span class="stars-display">${buildStarsHTML(stats.avg)}</span><span class="rating-count">(${stats.count})</span>`;
+        });
+    }
+
+    renderCardRatings();
+    window.addEventListener('languageChanged', renderCardRatings);
+
+    // ==================== Skeleton Loading لصور المنتجات (كروت الرئيسية والمتجر) ====================
+    function initCardImageSkeletons() {
+        document.querySelectorAll('.card-img-box').forEach(box => {
+            const img = box.querySelector('img');
+            if (!img || box.dataset.skeletonReady) return;
+            box.dataset.skeletonReady = 'true';
+
+            if (img.complete && img.naturalWidth > 0) {
+                box.classList.add('img-loaded');
+                return;
+            }
+
+            box.classList.add('img-skeleton');
+            img.addEventListener('load', () => {
+                box.classList.remove('img-skeleton');
+                box.classList.add('img-loaded');
+            });
+            img.addEventListener('error', () => {
+                box.classList.remove('img-skeleton');
+            });
+        });
+    }
+
+    initCardImageSkeletons();
 });
