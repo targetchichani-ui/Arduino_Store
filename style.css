@@ -1446,17 +1446,29 @@ html.dark-mode #products p {
     justify-content: center;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
     z-index: 999;
+    text-decoration: none;
+    line-height: 0;
+    border: none;
+    outline: none;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.whatsapp-float-btn:visited,
+.whatsapp-float-btn:active,
+.whatsapp-float-btn:focus {
+    text-decoration: none;
 }
 
 .whatsapp-float-btn i {
     color: #ffffff;
     font-size: 30px;
+    line-height: 1;
 }
 
 .whatsapp-float-btn:hover {
     transform: scale(1.08);
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    text-decoration: none;
 }
 
 .whatsapp-float-btn::before {
