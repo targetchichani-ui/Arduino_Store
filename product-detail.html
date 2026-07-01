@@ -10,16 +10,7 @@
 </head>
 <body>
 
-    <!-- Intro (مستوحى من تصميم Massively) -->
-    <div id="intro">
-        <h1 data-i18n="intro_title">أردوينو <span style="color: var(--cta-color);">ستور</span></h1>
-        <p data-i18n="intro_desc">منصتك الأولى للحصول على أفضل القطع الإلكترونية والمتحكمات الذكية لبناء مشاريعك البرمجية بكل سهولة.</p>
-        <ul class="actions">
-            <li><a href="#main-hero" class="btn-intro-continue" data-i18n="intro_btn">⌄ استمر</a></li>
-        </ul>
-    </div>
-
-   <header class="main-header-nav" id="header">
+<header class="main-header-nav">
     <div class="nav-container">
         
         <a href="index.html" class="logo" data-i18n="logo">أردوينو <span>ستور</span></a>
@@ -79,96 +70,60 @@
         </div>
     </header>
 
-    <section class="hero-section" id="main-hero">
-        <div class="hero-canvas-bg" id="heroParallaxBg"></div>
-        <div class="hero-content">
-            <h1 data-i18n="hero_title">ابدأ رحلة الابتكار مع أفضل القطع الإلكترونية</h1>
-            <p data-i18n="hero_desc">نوفر لك لوحات Arduino الأصلي ومكوناتها لتطوير مشاريعك البرمجية بكل سهولة ومن مكان واحد.</p>
-            <a href="shop.html" class="btn-cta" data-i18n="hero_btn">تسوّق الآن</a>
+    <main style="padding: 120px 5% 80px 5%; min-height: 80vh; background: var(--bg-color);">
+        <div id="productDetailLoading" style="text-align:center; padding: 60px 0;">
+            <p data-i18n="loading_product">جاري تحميل المنتج...</p>
         </div>
-    </section>
 
-    <section id="products" style="padding: 80px 20px; text-align: center; background-color: #f9f9f9;">
-        <h2 data-i18n="products_title">منتجاتنا المتميزة</h2>
-        <p data-i18n="products_desc" style="margin-bottom: 40px;">أفضل القطع المختارة لمشاريعك القادمة</p>
+        <div id="productDetailContent" class="product-detail-wrapper" style="display:none;">
+            <a href="shop.html" class="back-to-shop-link">
+                <i class="fas fa-arrow-right rtl-arrow"></i>
+                <span data-i18n="back_to_shop">رجوع للمتجر</span>
+            </a>
 
-        <div class="products-grid-container" style="margin-top: 20px;">
-            <div class="product-card" data-id="arduino-uno-r3" data-name="Arduino Uno R3 الأصلي" data-price="2400" data-category="Microcontrollers" data-img="https://images.unsplash.com/photo-1603732551658-5fabbafa84eb?w=400&q=80">
-                <a href="product-detail.html?id=arduino-uno-r3" class="product-link"><div class="card-img-box">
-                    <img src="https://images.unsplash.com/photo-1603732551658-5fabbafa84eb?w=400&q=80" alt="Arduino Uno R3">
-                </div></a>
-                <div class="card-info">
-                    <a href="product-detail.html?id=arduino-uno-r3" class="product-link-title"><h3>Arduino Uno R3 الأصلي</h3></a>
-                    <p class="product-category">Microcontrollers</p>
-                    <div class="card-footer-flex">
-                        <span class="price">2,400 DA</span>
-                        <button class="add-to-cart-btn" title="أضف إلى السلة" data-id="arduino-uno-r3" data-name="Arduino Uno R3 الأصلي" data-price="2400" data-img="https://images.unsplash.com/photo-1603732551658-5fabbafa84eb?w=400&q=80"><i class="fas fa-shopping-cart"></i></button>
-                    </div>
+            <div class="product-detail-grid">
+                <div class="product-detail-img-box">
+                    <img id="pdImage" src="" alt="">
                 </div>
-            </div>
-
-            <div class="product-card" data-id="nodemcu-esp8266-v3-wifi" data-name="NodeMCU ESP8266 V3 WiFi" data-price="1500" data-category="IoT Boards" data-img="[New Article] Connect an ESP8266 NodeMCU to a….jpg">
-                <a href="product-detail.html?id=nodemcu-esp8266-v3-wifi" class="product-link"><div class="card-img-box">
-                    <img src="[New Article] Connect an ESP8266 NodeMCU to a….jpg" alt="NodeMCU ESP8266">
-                </div></a>
-                <div class="card-info">
-                    <a href="product-detail.html?id=nodemcu-esp8266-v3-wifi" class="product-link-title"><h3>NodeMCU ESP8266 V3 WiFi</h3></a>
-                    <p class="product-category">IoT Boards</p>
-                    <div class="card-footer-flex">
-                        <span class="price">1,500 DA</span>
-                        <button class="add-to-cart-btn" title="أضف إلى السلة" data-id="nodemcu-esp8266-v3-wifi" data-name="NodeMCU ESP8266 V3 WiFi" data-price="1500" data-img="[New Article] Connect an ESP8266 NodeMCU to a….jpg"><i class="fas fa-shopping-cart"></i></button>
+                <div class="product-detail-info">
+                    <p class="product-category" id="pdCategory"></p>
+                    <h1 id="pdName"></h1>
+                    <div class="product-detail-rating" id="pdRating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        <span>(4.5)</span>
                     </div>
-                </div>
-            </div>
+                    <p class="product-detail-price" id="pdPrice"></p>
+                    <p class="product-detail-desc" id="pdDesc"></p>
 
-            <div class="product-card" data-id="ultrasonic-sensor-hc-sr04" data-name="Ultrasonic Sensor HC-SR04" data-price="650" data-category="Sensors" data-img="HC-SR04 SOUND ULTRASONIC RANGE DISTANCE SENSOR MODULE FOR ARDUINO ULTRANIC SENSOR MODULE 4PINS.jpg">
-                <a href="product-detail.html?id=ultrasonic-sensor-hc-sr04" class="product-link"><div class="card-img-box">
-                    <img src="HC-SR04 SOUND ULTRASONIC RANGE DISTANCE SENSOR MODULE FOR ARDUINO ULTRANIC SENSOR MODULE 4PINS.jpg" alt="Ultrasonic Sensor">
-                </div></a>
-                <div class="card-info">
-                    <a href="product-detail.html?id=ultrasonic-sensor-hc-sr04" class="product-link-title"><h3>Ultrasonic Sensor HC-SR04</h3></a>
-                    <p class="product-category">Sensors</p>
-                    <div class="card-footer-flex">
-                        <span class="price">650 DA</span>
-                        <button class="add-to-cart-btn" title="أضف إلى السلة" data-id="ultrasonic-sensor-hc-sr04" data-name="Ultrasonic Sensor HC-SR04" data-price="650" data-img="HC-SR04 SOUND ULTRASONIC RANGE DISTANCE SENSOR MODULE FOR ARDUINO ULTRANIC SENSOR MODULE 4PINS.jpg"><i class="fas fa-shopping-cart"></i></button>
+                    <div class="product-detail-qty-row">
+                        <span data-i18n="quantity">الكمية</span>
+                        <div class="qty-selector">
+                            <button id="pdQtyMinus" class="cart-qty-btn">−</button>
+                            <span id="pdQtyValue">1</span>
+                            <button id="pdQtyPlus" class="cart-qty-btn">+</button>
+                        </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="product-card" data-id="solderless-breadboard-830-points" data-name="Solderless Breadboard 830 Points" data-price="650" data-category="Accessories" data-img="Breadboard 830 Point Solderless PCB Bread Board MB-102 MB102 Test Develop DIY.jpg">
-                <a href="product-detail.html?id=solderless-breadboard-830-points" class="product-link"><div class="card-img-box">
-                    <img src="Breadboard 830 Point Solderless PCB Bread Board MB-102 MB102 Test Develop DIY.jpg" alt="Breadboard">
-                </div></a>
-                <div class="card-info">
-                    <a href="product-detail.html?id=solderless-breadboard-830-points" class="product-link-title"><h3>Solderless Breadboard 830 Points</h3></a>
-                    <p class="product-category">Accessories</p>
-                    <div class="card-footer-flex">
-                        <span class="price">650 DA</span>
-                        <button class="add-to-cart-btn" title="أضف إلى السلة" data-id="solderless-breadboard-830-points" data-name="Solderless Breadboard 830 Points" data-price="650" data-img="Breadboard 830 Point Solderless PCB Bread Board MB-102 MB102 Test Develop DIY.jpg"><i class="fas fa-shopping-cart"></i></button>
-                    </div>
-                </div>
-            </div>
+                    <button id="pdAddToCartBtn" class="btn-cta product-detail-add-btn">
+                        <i class="fas fa-shopping-cart"></i> <span data-i18n="add_to_cart">أضف إلى السلة</span>
+                    </button>
 
-            <div class="product-card" data-id="male-to-male-jumper-wires-20cm" data-name="Male-to-Male Jumper Wires 20cm" data-price="350" data-category="Accessories" data-img="40pcs=1lot 10cm 2_54mm 1pin Male to Male jumper wire Dupont cable - AliExpress 13.jpg">
-                <a href="product-detail.html?id=male-to-male-jumper-wires-20cm" class="product-link"><div class="card-img-box">
-                    <img src="40pcs=1lot 10cm 2_54mm 1pin Male to Male jumper wire Dupont cable - AliExpress 13.jpg" alt="Jumper Wires">
-                </div></a>
-                <div class="card-info">
-                    <a href="product-detail.html?id=male-to-male-jumper-wires-20cm" class="product-link-title"><h3>Male-to-Male Jumper Wires 20cm</h3></a>
-                    <p class="product-category">Accessories</p>
-                    <div class="card-footer-flex">
-                        <span class="price">350 DA</span>
-                        <button class="add-to-cart-btn" title="أضف إلى السلة" data-id="male-to-male-jumper-wires-20cm" data-name="Male-to-Male Jumper Wires 20cm" data-price="350" data-img="40pcs=1lot 10cm 2_54mm 1pin Male to Male jumper wire Dupont cable - AliExpress 13.jpg"><i class="fas fa-shopping-cart"></i></button>
+                    <div class="product-detail-trust">
+                        <p><i class="fas fa-truck"></i> <span data-i18n="trust_delivery">توصيل لكل الولايات</span></p>
+                        <p><i class="fas fa-shield-alt"></i> <span data-i18n="trust_warranty">ضمان على المنتج</span></p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <ul class="actions" style="margin-top: 50px; list-style: none;">
-            <li><a href="shop.html" class="btn-cta" data-i18n="products_view_all">تصفح كل المنتجات</a></li>
-        </ul>
-    </section>
+        <div id="productNotFound" style="display:none; text-align:center; padding: 60px 0;">
+            <h2 data-i18n="product_not_found">هاد المنتج ماكاينش</h2>
+            <a href="shop.html" class="btn-cta" data-i18n="back_to_shop">رجوع للمتجر</a>
+        </div>
+    </main>
 
+    
+    <!-- الفوتر السفلي الثابت والموحد -->
     <footer class="main-footer">
         <form class="footer-contact-form" method="post" action="#">
             <h3 data-i18n="form_title">راسلنا</h3>
@@ -242,6 +197,9 @@
         </div>
     </aside>
 
+    <!-- ربط السكريبت الموحد لضمان عمل الترجمة ونظام اللغات في هذه الصفحة أيضاً -->
+    <script src="products-data.js"></script>
     <script src="script.js"></script>
+    <script src="product-detail.js"></script>
 </body>
 </html>

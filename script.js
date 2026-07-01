@@ -45,7 +45,17 @@ document.addEventListener("DOMContentLoaded", () => {
             cart_title: "سلة المشتريات",
             cart_empty: "السلة فارغة حالياً",
             cart_total: "المجموع",
-            cart_checkout: "إتمام الطلب عبر واتساب"
+            cart_checkout: "إتمام الطلب عبر واتساب",
+            search_placeholder: "ابحث عن منتج...",
+            filter_all: "الكل",
+            no_results: "ماكاينش نتائج مطابقة",
+            back_to_shop: "رجوع للمتجر",
+            add_to_cart: "أضف إلى السلة",
+            quantity: "الكمية",
+            loading_product: "جاري تحميل المنتج...",
+            product_not_found: "هاد المنتج ماكاينش",
+            trust_delivery: "توصيل لكل الولايات",
+            trust_warranty: "ضمان على المنتج"
         },
         en: {
             doc_title: "Arduino Store - Houssam HK",
@@ -91,7 +101,17 @@ document.addEventListener("DOMContentLoaded", () => {
             cart_title: "Shopping Cart",
             cart_empty: "Your cart is empty",
             cart_total: "Total",
-            cart_checkout: "Checkout via WhatsApp"
+            cart_checkout: "Checkout via WhatsApp",
+            search_placeholder: "Search for a product...",
+            filter_all: "All",
+            no_results: "No matching products found",
+            back_to_shop: "Back to shop",
+            add_to_cart: "Add to cart",
+            quantity: "Quantity",
+            loading_product: "Loading product...",
+            product_not_found: "This product doesn't exist",
+            trust_delivery: "Delivery to all provinces",
+            trust_warranty: "Product warranty"
         }
     };
 
@@ -123,6 +143,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (langToggleBtn) {
             langToggleBtn.textContent = lang === 'ar' ? 'English' : 'العربية';
         }
+
+        window.dispatchEvent(new CustomEvent('languageChanged'));
     }
 
     if (langToggleBtn) {
@@ -384,21 +406,119 @@ document.addEventListener("DOMContentLoaded", () => {
     if (cartCheckoutBtn) {
         cartCheckoutBtn.addEventListener('click', () => {
             const cart = getCart();
-            if (cart.length === 0) return;
+            if (cart.length === 0) {
+                const emptyAlert = (currentLang === 'ar') ? 'السلة فارغة، زيد منتج قبل ما تكمل الطلب.' : 'Your cart is empty. Add a product before checking out.';
+                alert(emptyAlert);
+                return;
+            }
 
-            let message = (currentLang === 'ar') ? 'مرحباً، بغيت نطلب:%0A' : 'Hello, I would like to order:%0A';
+            let message = (currentLang === 'ar') ? 'مرحباً، بغيت نطلب:\n' : 'Hello, I would like to order:\n';
             let total = 0;
             cart.forEach(item => {
                 const lineTotal = item.price * item.qty;
                 total += lineTotal;
-                message += `- ${item.name} x${item.qty} = ${formatPrice(lineTotal)}%0A`;
+                message += `- ${item.name} x${item.qty} = ${formatPrice(lineTotal)}\n`;
             });
-            message += (currentLang === 'ar') ? `%0Aالمجموع الكلي: ${formatPrice(total)}` : `%0ATotal: ${formatPrice(total)}`;
+            message += (currentLang === 'ar') ? `\nالمجموع الكلي: ${formatPrice(total)}` : `\nTotal: ${formatPrice(total)}`;
 
-            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
+            const encodedMessage = encodeURIComponent(message);
+            const cleanNumber = WHATSAPP_NUMBER.replace(/\D/g, '');
+            window.open(`https://wa.me/${cleanNumber}?text=${encodedMessage}`, '_blank');
         });
     }
 
     // عرض السلة عند تحميل الصفحة
     renderCart();
+
+    // الاستماع لتحديثات السلة الجاية من صفحات أخرى (بحال product-detail.js)
+    window.addEventListener('cartUpdated', renderCart);
+
+    // ==================== 6. البحث والفلترة (فقط فـ shop.html) ====================
+    const productsGrid = document.getElementById('productsGrid');
+    const categoryFiltersEl = document.getElementById('categoryFilters');
+    const searchInput = document.getElementById('productSearchInput');
+    const noResultsMsg = document.getElementById('noResultsMsg');
+
+    if (productsGrid && categoryFiltersEl) {
+        const categoryLabels = {
+            ar: {
+                all: "الكل",
+                "Microcontrollers": "متحكمات",
+                "IoT Boards": "لوحات IoT",
+                "Sensors": "حساسات",
+                "Accessories": "إكسسوارات",
+                "Drivers": "متحكمات محركات",
+                "Motors": "محركات",
+                "Displays": "شاشات عرض",
+                "Modules": "وحدات",
+                "Wireless": "اتصال لاسلكي",
+                "Power": "تغذية كهربائية"
+            },
+            en: {
+                all: "All",
+                "Microcontrollers": "Microcontrollers",
+                "IoT Boards": "IoT Boards",
+                "Sensors": "Sensors",
+                "Accessories": "Accessories",
+                "Drivers": "Drivers",
+                "Motors": "Motors",
+                "Displays": "Displays",
+                "Modules": "Modules",
+                "Wireless": "Wireless",
+                "Power": "Power"
+            }
+        };
+
+        const allCards = Array.from(productsGrid.querySelectorAll('.product-card'));
+        const categories = Array.from(new Set(allCards.map(c => c.dataset.category))).sort();
+
+        // بناء أزرار الفلترة
+        categories.forEach(cat => {
+            const chip = document.createElement('button');
+            chip.className = 'filter-chip';
+            chip.dataset.category = cat;
+            chip.textContent = categoryLabels[currentLang][cat] || cat;
+            categoryFiltersEl.appendChild(chip);
+        });
+
+        let activeCategory = 'all';
+
+        function applyFilters() {
+            const query = (searchInput ? searchInput.value.trim().toLowerCase() : '');
+            let visibleCount = 0;
+
+            allCards.forEach(card => {
+                const matchesCategory = (activeCategory === 'all') || (card.dataset.category === activeCategory);
+                const matchesSearch = !query || card.dataset.name.toLowerCase().includes(query);
+                const show = matchesCategory && matchesSearch;
+                card.classList.toggle('hidden-by-filter', !show);
+                if (show) visibleCount++;
+            });
+
+            if (noResultsMsg) {
+                noResultsMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+            }
+        }
+
+        categoryFiltersEl.addEventListener('click', (e) => {
+            const chip = e.target.closest('.filter-chip');
+            if (!chip) return;
+            categoryFiltersEl.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            activeCategory = chip.dataset.category;
+            applyFilters();
+        });
+
+        if (searchInput) {
+            searchInput.addEventListener('input', applyFilters);
+        }
+
+        // إعادة ترجمة أزرار الفلترة كي تبدل اللغة
+        window.addEventListener('languageChanged', () => {
+            categoryFiltersEl.querySelectorAll('.filter-chip').forEach(chip => {
+                const cat = chip.dataset.category;
+                chip.textContent = categoryLabels[currentLang][cat] || cat;
+            });
+        });
+    }
 });
