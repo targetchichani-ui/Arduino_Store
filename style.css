@@ -1431,3 +1431,58 @@ html.dark-mode #products h2,
 html.dark-mode #products p {
     color: #e6edf3;
 }
+
+/* ==================== زر واتساب العائم (Live Chat) ==================== */
+.whatsapp-float-btn {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    width: 58px;
+    height: 58px;
+    background-color: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    z-index: 999;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.whatsapp-float-btn i {
+    color: #ffffff;
+    font-size: 30px;
+}
+
+.whatsapp-float-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.whatsapp-float-btn::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #25D366;
+    opacity: 0.5;
+    animation: whatsappPulse 2s infinite;
+    z-index: -1;
+}
+
+@keyframes whatsappPulse {
+    0% { transform: scale(1); opacity: 0.5; }
+    70% { transform: scale(1.6); opacity: 0; }
+    100% { transform: scale(1.6); opacity: 0; }
+}
+
+@media (max-width: 600px) {
+    .whatsapp-float-btn {
+        width: 52px;
+        height: 52px;
+        bottom: 18px;
+        left: 18px;
+    }
+    .whatsapp-float-btn i { font-size: 26px; }
+}
