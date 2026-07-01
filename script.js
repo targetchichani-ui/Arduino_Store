@@ -365,7 +365,7 @@ document.addEventListener("DOMContentLoaded", () => {
             total += lineTotal;
             return `
                 <div class="cart-item" data-id="${item.id}">
-                    <img src="${item.img}" alt="${item.name}">
+                    <img loading="lazy" decoding="async" src="${item.img}" alt="${item.name}">
                     <div class="cart-item-info">
                         <h4>${item.name}</h4>
                         <div class="cart-item-price">${formatPrice(lineTotal)}</div>
@@ -546,7 +546,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         itemsContainer.innerHTML = list.map(item => `
             <div class="cart-item" data-id="${item.id}">
-                <img src="${item.img}" alt="${item.name}">
+                <img loading="lazy" decoding="async" src="${item.img}" alt="${item.name}">
                 <div class="cart-item-info">
                     <h4>${item.name}</h4>
                     <div class="cart-item-price">${formatPrice(item.price)}</div>
