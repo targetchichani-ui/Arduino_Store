@@ -1156,3 +1156,148 @@ html[dir="ltr"] .product-detail-info { text-align: left; }
     color: var(--primary-color);
     width: 18px;
 }
+/* ==========================================================================
+   زر تبديل الوضع الليلي (Dark Mode Toggle)
+   ========================================================================== */
+.theme-toggle-btn {
+    background: transparent;
+    border: 1.5px solid #cbd5e0;
+    color: #4a5568;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    margin-right: 10px;
+}
+
+.theme-toggle-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background-color: rgba(0, 129, 138, 0.03);
+}
+
+html[dir="ltr"] .theme-toggle-btn {
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+@media (max-width: 900px) {
+    .theme-toggle-btn {
+        margin: 15px 0 0 0;
+    }
+    html[dir="ltr"] .theme-toggle-btn {
+        margin: 15px 0 0 0;
+    }
+}
+
+/* ==========================================================================
+   الوضع الليلي (Dark Mode) - كل التعديلات محصورة تحت html.dark-mode
+   باش الثيم الفاتح الأصلي يبقى بلا أي تغيير
+   ========================================================================== */
+html.dark-mode {
+    --bg-color: #0f1720;
+}
+
+html.dark-mode body {
+    background-color: #0f1720;
+    color: #dbe4ea;
+}
+
+html.dark-mode .main-header-nav,
+html.dark-mode #mainNav,
+html.dark-mode .mega-menu,
+html.dark-mode .product-card,
+html.dark-mode .card-img-box,
+html.dark-mode .product-detail-img-box,
+html.dark-mode .qty-selector,
+html.dark-mode .cart-drawer,
+html.dark-mode .cart-drawer-footer,
+html.dark-mode .filter-chip,
+html.dark-mode .shop-search-box input,
+html.dark-mode #intro {
+    background-color: #17212b;
+    border-color: #2a3744;
+}
+
+html.dark-mode #intro {
+    background: radial-gradient(circle at 50% 30%, #1c2b30 0%, #0b1218 70%);
+}
+
+html.dark-mode .hero-canvas-bg {
+    background: radial-gradient(circle at 50% 50%, #17212b 0%, #0f1720 70%);
+}
+
+html.dark-mode .nav-menu-list a,
+html.dark-mode .menu-toggle-btn,
+html.dark-mode .card-info h3,
+html.dark-mode .price,
+html.dark-mode .hero-content h1,
+html.dark-mode .product-detail-info h1,
+html.dark-mode .cart-total-row,
+html.dark-mode .cart-item-info h4,
+html.dark-mode .form-title,
+html.dark-mode .footer-box h3 {
+    color: #e6edf3;
+}
+
+html.dark-mode .hero-content p,
+html.dark-mode .product-detail-desc,
+html.dark-mode .product-detail-trust,
+html.dark-mode .cart-empty-msg,
+html.dark-mode .no-results-msg,
+html.dark-mode .product-detail-rating span {
+    color: #9fb0bd;
+}
+
+html.dark-mode .mega-column ul li a {
+    color: #cbd5e0 !important;
+}
+
+html.dark-mode .filter-chip {
+    color: #cbd5e0;
+}
+
+html.dark-mode .filter-chip.active {
+    color: #fff;
+}
+
+html.dark-mode .shop-search-box input {
+    color: #e6edf3;
+}
+
+html.dark-mode .lang-switch-btn,
+html.dark-mode .theme-toggle-btn {
+    color: #cbd5e0;
+    border-color: #3a4756;
+}
+
+html.dark-mode .cart-item {
+    border-bottom-color: #2a3744;
+}
+
+html.dark-mode .cart-item-info h4 {
+    color: #e6edf3;
+}
+
+html.dark-mode .cart-qty-btn {
+    background: #1e2937;
+    border-color: #3a4756;
+    color: #e6edf3;
+}
+
+html.dark-mode .cart-drawer-footer {
+    border-top-color: #2a3744;
+}
+
+html.dark-mode .nav-arrow {
+    color: #9fb0bd;
+}
+
+html.dark-mode .product-detail-info .product-category {
+    background: #1e2937;
+}

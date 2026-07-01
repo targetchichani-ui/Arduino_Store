@@ -1,4 +1,33 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // ==================== 0. الوضع الليلي (Dark Mode Toggle) ====================
+    const THEME_KEY = 'siteTheme';
+    const themeToggleBtn = document.getElementById('darkModeToggleBtn');
+
+    function applyTheme(theme) {
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark-mode');
+        } else {
+            document.documentElement.classList.remove('dark-mode');
+        }
+        if (themeToggleBtn) {
+            themeToggleBtn.innerHTML = theme === 'dark'
+                ? '<i class="fas fa-sun"></i>'
+                : '<i class="fas fa-moon"></i>';
+            themeToggleBtn.setAttribute('aria-label', theme === 'dark' ? 'الوضع النهاري' : 'الوضع الليلي');
+        }
+    }
+
+    let currentTheme = localStorage.getItem(THEME_KEY) || 'light';
+    applyTheme(currentTheme);
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            localStorage.setItem(THEME_KEY, currentTheme);
+            applyTheme(currentTheme);
+        });
+    }
+
   // ==================== 1. نظام اللغات (مضبوط نيشَان ومعالج الألوان) ====================
     const translations = {
         ar: {
