@@ -902,6 +902,15 @@ html[dir="ltr"] .cart-drawer.active { left: 0; }
 
 body.cart-open { overflow: hidden; }
 
+/* تحدي: كي تكون السلة (أو المفضلة) مفتوحة، نخبيو الأزرار العائمة
+   (رجوع للأعلى + واتساب) باش ما يتراكبوش مع زر "إتمام الطلب" */
+body.cart-open .back-to-top-btn,
+body.cart-open .whatsapp-float-btn {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
 @media (max-width: 480px) {
     .cart-drawer { max-width: 100%; }
 }
