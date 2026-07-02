@@ -1735,6 +1735,7 @@ html.dark-mode .pd-skeleton-line {
 html[dir="ltr"] .back-to-top-btn {
     right: auto;
     left: 25px;
+    bottom: 95px;
 }
 
 html.dark-mode .back-to-top-btn {
