@@ -1499,6 +1499,19 @@ html.dark-mode #products p {
     .whatsapp-float-btn i { font-size: 26px; }
 }
 
+/* فوضعية English، السلة/المفضلة تفتح من اليسار، فخلينا الأزرار العائمة فاليمين باش ما يتراكبوش معاها */
+html[dir="ltr"] .whatsapp-float-btn {
+    left: auto;
+    right: 25px;
+}
+
+@media (max-width: 600px) {
+    html[dir="ltr"] .whatsapp-float-btn {
+        left: auto;
+        right: 18px;
+    }
+}
+
 /* ==========================================================================
    نظام التقييمات (Ratings) - نجوم حقيقية + عدد المراجعات
    ========================================================================== */
@@ -1733,8 +1746,7 @@ html.dark-mode .pd-skeleton-line {
 }
 
 html[dir="ltr"] .back-to-top-btn {
-    right: auto;
-    left: 25px;
+    right: 25px;
     bottom: 95px;
 }
 
