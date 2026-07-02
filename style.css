@@ -1695,3 +1695,282 @@ html.dark-mode .pd-skeleton-img,
 html.dark-mode .pd-skeleton-line {
     background: #1e2937;
 }
+/* ==========================================================================
+   زر العودة للأعلى (Back to Top)
+   ========================================================================== */
+.back-to-top-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    z-index: 999;
+    font-size: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, background-color 0.3s ease;
+}
+
+.back-to-top-btn.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top-btn:hover {
+    background-color: var(--cta-color);
+    transform: translateY(-4px);
+}
+
+html[dir="ltr"] .back-to-top-btn {
+    right: auto;
+    left: 25px;
+}
+
+html.dark-mode .back-to-top-btn {
+    background-color: #17212b;
+    border: 1px solid #2a3744;
+}
+
+html.dark-mode .back-to-top-btn:hover {
+    background-color: var(--cta-color);
+    border-color: var(--cta-color);
+}
+
+/* ==========================================================================
+   قسم الأسئلة الشائعة (FAQ Section)
+   ========================================================================== */
+.faq-section {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: var(--bg-color);
+}
+
+.faq-section h2 {
+    font-size: 2.4rem;
+    color: #007A86;
+    margin-bottom: 10px;
+}
+
+.faq-section .faq-subtitle {
+    color: #4a6a70;
+    margin-bottom: 45px;
+    font-size: 1.05rem;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    text-align: right;
+}
+
+html[dir="ltr"] .faq-container {
+    text-align: left;
+}
+
+.faq-item {
+    background: #fff;
+    border: 1px solid #dfeeee;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-item.active {
+    border-color: var(--cta-color);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 18px 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: inherit;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.faq-question .faq-icon {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--bg-color);
+    color: var(--cta-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.faq-item.active .faq-question .faq-icon {
+    transform: rotate(45deg);
+    background-color: var(--cta-color);
+    color: #fff;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    padding: 0 22px;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 300px;
+    padding: 0 22px 20px 22px;
+}
+
+.faq-answer p {
+    color: #5a7a80;
+    line-height: 1.8;
+    font-size: 0.98rem;
+}
+
+html.dark-mode .faq-section {
+    background-color: #0f1720;
+}
+
+html.dark-mode .faq-section h2 {
+    color: #e6edf3;
+}
+
+html.dark-mode .faq-section .faq-subtitle {
+    color: #b8c6d1;
+}
+
+html.dark-mode .faq-item {
+    background: #17212b;
+    border-color: #2a3744;
+}
+
+html.dark-mode .faq-item.active {
+    border-color: var(--cta-color);
+}
+
+html.dark-mode .faq-question {
+    color: #e6edf3;
+}
+
+html.dark-mode .faq-question .faq-icon {
+    background-color: #0f1720;
+}
+
+html.dark-mode .faq-answer p {
+    color: #b8c6d1;
+}
+
+@media (max-width: 600px) {
+    .faq-section { padding: 55px 15px; }
+    .faq-section h2 { font-size: 1.9rem; }
+    .faq-question { padding: 16px; font-size: 0.98rem; }
+}
+
+/* ==========================================================================
+   صفحة 404 المخصصة
+   ========================================================================== */
+.error-404-section {
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 140px 20px 80px 20px;
+    background: var(--bg-color);
+}
+
+.error-404-content .error-404-code {
+    font-size: clamp(80px, 18vw, 160px);
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--primary-color), var(--cta-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 10px;
+}
+
+.error-404-content .error-404-icon {
+    font-size: 50px;
+    color: var(--cta-color);
+    margin-bottom: 20px;
+}
+
+.error-404-content h1 {
+    font-size: 1.8rem;
+    color: var(--dark-color);
+    margin-bottom: 12px;
+}
+
+.error-404-content p {
+    color: #4a6a70;
+    max-width: 480px;
+    margin: 0 auto 35px auto;
+    line-height: 1.8;
+}
+
+.error-404-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.error-404-actions .btn-secondary-404 {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 30px;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.error-404-actions .btn-secondary-404:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+html.dark-mode .error-404-section {
+    background: #0f1720;
+}
+
+html.dark-mode .error-404-content h1 {
+    color: #e6edf3;
+}
+
+html.dark-mode .error-404-content p {
+    color: #b8c6d1;
+}
+
+html.dark-mode .error-404-actions .btn-secondary-404 {
+    border-color: #6ba7b3;
+    color: #cfe8ec;
+}
+
+html.dark-mode .error-404-actions .btn-secondary-404:hover {
+    background-color: #6ba7b3;
+    color: #0f1720;
+}

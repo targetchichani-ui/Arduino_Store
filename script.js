@@ -89,7 +89,23 @@ document.addEventListener("DOMContentLoaded", () => {
             trust_warranty: "ضمان على المنتج",
             rate_this_product: "قيّم هذا المنتج",
             rate_thanks: "شكراً على تقييمك!",
-            reviews_label: "تقييم"
+            reviews_label: "تقييم",
+            faq_title: "الأسئلة الشائعة",
+            faq_subtitle: "إجابات على أكثر الأسئلة اللي توصلنا بخصوص التوصيل والدفع والمنتجات",
+            faq_q1: "شحال يخلص التوصيل ولوقتاش يوصل الطلب؟",
+            faq_a1: "التوصيل يوصل لكل ولايات الوطن، وثمنه يختلف حسب البلدية (مكتب أو للمنزل). مدة التوصيل عادة بين 2 و5 أيام حسب الولاية.",
+            faq_q2: "كيفاش نخلص الطلب؟",
+            faq_a2: "الخلاص يكون عند الاستلام (Cash on Delivery) عبر مكاتب التوصيل، ولا مباشرة مع عون التوصيل عند وصول الطرد لباب الدار.",
+            faq_q3: "واش المنتجات أصلية ومضمونة؟",
+            faq_a3: "إيه بالتأكيد، كل المنتجات أصلية ومختارة بعناية، وتستافد من ضمان على العيوب الصناعية حسب نوع المنتج.",
+            faq_q4: "نقدر نبدل ولا نرجع المنتج إذا ما عجبنيش؟",
+            faq_a4: "إيه، تقدر تبدل ولا ترجع المنتج فظرف 7 أيام من تاريخ الاستلام بشرط يكون فحالته الأصلية وبلا استعمال.",
+            faq_q5: "كيفاش نتواصل معاكم إذا عندي مشكل ولا استفسار؟",
+            faq_a5: "تقدر تراسلنا مباشرة عبر زر واتساب العائم فالموقع، ولا عبر البريد الإلكتروني أو الهاتف الموجودين فالفوتر.",
+            error_404_title: "الصفحة اللي قلبت عليها ماكانتش",
+            error_404_desc: "يمكن الرابط تبدل ولا الصفحة تشالت. جرب ترجع للرئيسية ولا تكمل التسوق عندنا.",
+            error_404_home: "الرئيسية",
+            error_404_shop: "تصفح المتجر"
         },
         en: {
             doc_title: "Arduino Store - Houssam HK",
@@ -150,7 +166,23 @@ document.addEventListener("DOMContentLoaded", () => {
             trust_warranty: "Product warranty",
             rate_this_product: "Rate this product",
             rate_thanks: "Thanks for your rating!",
-            reviews_label: "reviews"
+            reviews_label: "reviews",
+            faq_title: "Frequently Asked Questions",
+            faq_subtitle: "Answers to the most common questions about delivery, payment and products",
+            faq_q1: "How much does delivery cost and how long does it take?",
+            faq_a1: "We deliver to all provinces of the country, price varies by municipality (office pickup or home delivery). Delivery usually takes 2 to 5 days depending on the province.",
+            faq_q2: "How do I pay for my order?",
+            faq_a2: "Payment is Cash on Delivery through delivery offices, or directly with the delivery agent when the package arrives at your door.",
+            faq_q3: "Are the products original and guaranteed?",
+            faq_a3: "Yes, all products are original and carefully selected, and benefit from a warranty against manufacturing defects depending on the product type.",
+            faq_q4: "Can I exchange or return a product if I'm not satisfied?",
+            faq_a4: "Yes, you can exchange or return the product within 7 days of receiving it, provided it's in its original condition and unused.",
+            faq_q5: "How can I contact you if I have an issue or question?",
+            faq_a5: "You can message us directly via the floating WhatsApp button on the site, or through the email and phone number found in the footer.",
+            error_404_title: "The page you're looking for doesn't exist",
+            error_404_desc: "The link may have changed or the page was removed. Try going back home or continue shopping with us.",
+            error_404_home: "Home",
+            error_404_shop: "Browse Shop"
         }
     };
 
@@ -821,4 +853,34 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     initCardImageSkeletons();
+
+    // ==================== زر العودة للأعلى (Back to Top) ====================
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // ==================== قسم الأسئلة الشائعة (FAQ Accordion) ====================
+    document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.closest('.faq-item');
+            const wasActive = item.classList.contains('active');
+
+            item.parentElement.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+
+            if (!wasActive) {
+                item.classList.add('active');
+            }
+        });
+    });
 });
