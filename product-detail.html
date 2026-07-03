@@ -13,6 +13,7 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="doc_title">متجر أردوينو الإلكتروني - Houssam HK</title>
+    <meta name="description" content="اكتشف تفاصيل المنتج، السعر، والتقييمات، وأضفه لسلتك أو للمفضلة بضغطة وحدة.">
     <link rel="icon" type="image/png" href="Gemini_Generated_Image_xmbnsvxmbnsvxmbn.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -24,7 +25,6 @@
         
         <a href="index.html" class="logo" data-i18n="logo">أردوينو <span>ستور</span></a>
         
-       <nav style="display: flex; align-items: center; gap: 20px;"></nav>
 
         <button id="cartToggleBtn" class="cart-toggle-btn" aria-label="سلة المشتريات">
             <i class="fas fa-shopping-cart"></i>
@@ -369,6 +369,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // ملاحظة مهمة: ما نربطوش هنا addEventListener('click') على pdWishlistBtn،
+    // لأن script.js عندو ديجا مستمع عام على كل ".wishlist-btn, .product-detail-wishlist-btn"
+    // (شوف قسم 5.5 فـ script.js). كنا نربطو مرتين، وكل ضغطة كانت تبدل الحالة مرتين
+    // (تزيد فالمفضلة وفالحين تحيدها فآني واحد)، فالزر كان يبان ماخدمش فهاد الصفحة.
+    // هنا غير كنحضرو الـ dataset باش المستمع العام يقدر يقرا بيانات المنتج، وكنرسمو الحالة الأولية.
     if (pdWishlistBtn) {
         pdWishlistBtn.dataset.id = product.id;
         pdWishlistBtn.dataset.name = product.name;
@@ -376,21 +381,6 @@ document.addEventListener("DOMContentLoaded", () => {
         pdWishlistBtn.dataset.img = product.img;
 
         syncWishlistBtnPD();
-
-        pdWishlistBtn.addEventListener('click', () => {
-            let list = getWishlistPD();
-            const existingIndex = list.findIndex(item => item.id === product.id);
-            if (existingIndex > -1) {
-                list.splice(existingIndex, 1);
-            } else {
-                list.push({ id: product.id, name: product.name, price: product.price, img: product.img });
-            }
-            localStorage.setItem(WISHLIST_KEY, JSON.stringify(list));
-            syncWishlistBtnPD();
-
-            // نطلق حدث خاص باش سكريبت المفضلة (لي فـ script.js) يعاود يرسم الدرج والعداد
-            window.dispatchEvent(new CustomEvent('wishlistUpdated'));
-        });
     }
 
     if (addToCartBtn) {

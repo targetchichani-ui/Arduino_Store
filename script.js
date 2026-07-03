@@ -207,9 +207,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        if (typeof translations !== 'undefined' && translations[lang] && translations[lang]['doc_title']) {
-            document.title = translations[lang]['doc_title'];
-        }
+        // ملاحظة: ما بقيناش نفرضو document.title = doc_title هنا، لأن <title> عندها
+        // data-i18n ديالها (بحال error_404_title فصفحة 404) وكيتبدلات ديجا فالحلقة فوق.
+        // كنا نبدلوها زوج مرات ونمسحو أي عنوان خاص بالصفحة (بحال عنوان صفحة 404).
 
         if (langToggleBtn) {
             langToggleBtn.textContent = lang === 'ar' ? 'English' : 'العربية';
