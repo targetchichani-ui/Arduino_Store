@@ -13,12 +13,68 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="doc_title">متجر أردوينو الإلكتروني - Houssam HK</title>
-    <meta name="description" content="متجرك الأول فالجزائر لقطع Arduino، ESP32، الحساسات والمتحكمات الذكية. توصيل لكل الولايات والخلاص عند الاستلام.">
     <link rel="icon" type="image/png" href="Gemini_Generated_Image_xmbnsvxmbnsvxmbn.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ===== Particle Loading Screen ===== */
+        #loading-screen {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, #12172b 0%, #05070d 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        #loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        #particle-canvas { display: block; }
+        #loading-text {
+            color: #9fb3d9;
+            font-size: 14px;
+            letter-spacing: 3px;
+            margin-top: 20px;
+            opacity: 0.8;
+            animation: loadingPulseText 1.6s ease-in-out infinite;
+        }
+        @keyframes loadingPulseText {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+        #loading-progress-track {
+            width: 220px;
+            height: 3px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            margin-top: 16px;
+            overflow: hidden;
+        }
+        #loading-progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #5b8def, #7fd4ff);
+            border-radius: 3px;
+            transition: width 0.2s ease;
+        }
+    </style>
 </head>
 <body>
+
+    <!-- شاشة التحميل (Particle Loading Screen) -->
+    <div id="loading-screen">
+        <canvas id="particle-canvas"></canvas>
+        <div id="loading-text">جاري التحميل...</div>
+        <div id="loading-progress-track"><div id="loading-progress-bar"></div></div>
+    </div>
 
     <!-- Intro (مستوحى من تصميم Massively) -->
     <div id="intro">
@@ -34,6 +90,7 @@
         
         <a href="index.html" class="logo" data-i18n="logo">أردوينو <span>ستور</span></a>
         
+       <nav style="display: flex; align-items: center; gap: 20px;"></nav>
 
         <button id="cartToggleBtn" class="cart-toggle-btn" aria-label="سلة المشتريات">
             <i class="fas fa-shopping-cart"></i>
@@ -189,64 +246,6 @@
         </ul>
     </section>
 
-    <!-- قسم الأسئلة الشائعة (FAQ) -->
-    <section class="faq-section" id="faq">
-        <h2 data-i18n="faq_title">الأسئلة الشائعة</h2>
-        <p class="faq-subtitle" data-i18n="faq_subtitle">إجابات على أكثر الأسئلة اللي توصلنا بخصوص التوصيل والدفع والمنتجات</p>
-
-        <div class="faq-container">
-            <div class="faq-item active">
-                <button class="faq-question">
-                    <span data-i18n="faq_q1">شحال يخلص التوصيل ولوقتاش يوصل الطلب؟</span>
-                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
-                </button>
-                <div class="faq-answer">
-                    <p data-i18n="faq_a1">التوصيل يوصل لكل ولايات الوطن، وثمنه يختلف حسب البلدية (مكتب أو للمنزل). مدة التوصيل عادة بين 2 و5 أيام حسب الولاية.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question">
-                    <span data-i18n="faq_q2">كيفاش نخلص الطلب؟</span>
-                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
-                </button>
-                <div class="faq-answer">
-                    <p data-i18n="faq_a2">الخلاص يكون عند الاستلام (Cash on Delivery) عبر مكاتب التوصيل، ولا مباشرة مع عون التوصيل عند وصول الطرد لباب الدار.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question">
-                    <span data-i18n="faq_q3">واش المنتجات أصلية ومضمونة؟</span>
-                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
-                </button>
-                <div class="faq-answer">
-                    <p data-i18n="faq_a3">إيه بالتأكيد، كل المنتجات أصلية ومختارة بعناية، وتستافد من ضمان على العيوب الصناعية حسب نوع المنتج.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question">
-                    <span data-i18n="faq_q4">نقدر نبدل ولا نرجع المنتج إذا ما عجبنيش؟</span>
-                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
-                </button>
-                <div class="faq-answer">
-                    <p data-i18n="faq_a4">إيه، تقدر تبدل ولا ترجع المنتج فظرف 7 أيام من تاريخ الاستلام بشرط يكون فحالته الأصلية وبلا استعمال.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question">
-                    <span data-i18n="faq_q5">كيفاش نتواصل معاكم إذا عندي مشكل ولا استفسار؟</span>
-                    <span class="faq-icon"><i class="fas fa-plus"></i></span>
-                </button>
-                <div class="faq-answer">
-                    <p data-i18n="faq_a5">تقدر تراسلنا مباشرة عبر زر واتساب العائم فالموقع، ولا عبر البريد الإلكتروني أو الهاتف الموجودين فالفوتر.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <footer class="main-footer">
         <form class="footer-contact-form" method="post" action="#">
             <h3 data-i18n="form_title">راسلنا</h3>
@@ -337,12 +336,121 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- زر العودة للأعلى -->
-    <button id="backToTopBtn" class="back-to-top-btn" aria-label="العودة للأعلى">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+    <!-- Particle Loading Screen Script -->
+    <script>
+    (function () {
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        const loadingScreen = document.getElementById('loading-screen');
+        const progressBar = document.getElementById('loading-progress-bar');
+        const loadingText = document.getElementById('loading-text');
 
-    <script src="products-data.js"></script>
+        // ---- CONFIG: بدل هاد القيم على حسب راحتك ----
+        const IMG_SRC = 'loading-avatar.png'; // مسار الصورة (حطها فنفس فولدر الموقع)
+        const DISPLAY_SIZE = 220;             // حجم الصورة فشاشة التحميل (px)
+        const SAMPLE_GAP = 4;                 // رقم صغير = دقة أعلى بس أبطأ
+        const WHITE_THRESHOLD = 235;          // حساسية شيل اللون الأبيض
+        const ASSEMBLE_DURATION = 2000;       // مدة تجمع النقط (ميلي ثانية)
+        const MIN_SHOW_TIME = 1200;           // أقل مدة تبان فيها الشاشة حتى لو الصفحة تحملت بسرعة
+
+        const img = new Image();
+        img.src = IMG_SRC;
+
+        function fallbackHide() {
+            // إلا الصورة ما تحملاتش (مسار خاطئ)، نخبيو الشاشة بلا كريش للموقع
+            setTimeout(() => {
+                loadingScreen.classList.add('hidden');
+                setTimeout(() => loadingScreen.remove(), 800);
+            }, MIN_SHOW_TIME);
+        }
+
+        img.onload = () => {
+            const startShow = performance.now();
+
+            const off = document.createElement('canvas');
+            const offCtx = off.getContext('2d');
+            const scale = DISPLAY_SIZE / Math.max(img.width, img.height);
+            const w = Math.round(img.width * scale);
+            const h = Math.round(img.height * scale);
+            off.width = w;
+            off.height = h;
+            offCtx.drawImage(img, 0, 0, w, h);
+
+            let imageData;
+            try {
+                imageData = offCtx.getImageData(0, 0, w, h).data;
+            } catch (e) {
+                fallbackHide();
+                return;
+            }
+
+            const particles = [];
+            for (let y = 0; y < h; y += SAMPLE_GAP) {
+                for (let x = 0; x < w; x += SAMPLE_GAP) {
+                    const idx = (y * w + x) * 4;
+                    const r = imageData[idx], g = imageData[idx + 1], b = imageData[idx + 2], a = imageData[idx + 3];
+                    const isWhiteish = r > WHITE_THRESHOLD && g > WHITE_THRESHOLD && b > WHITE_THRESHOLD;
+                    if (a < 40 || isWhiteish) continue;
+
+                    particles.push({
+                        targetX: x,
+                        targetY: y,
+                        x: Math.random() * w,
+                        y: Math.random() * h * 0.4 - h * 0.5,
+                        color: `rgb(${r},${g},${b})`,
+                        size: SAMPLE_GAP * 0.9,
+                        delay: Math.random() * 400
+                    });
+                }
+            }
+
+            canvas.width = w;
+            canvas.height = h;
+
+            const animStart = performance.now();
+            function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+            function animate(now) {
+                const elapsed = now - animStart;
+                ctx.clearRect(0, 0, w, h);
+
+                let doneCount = 0;
+                particles.forEach(p => {
+                    const localElapsed = Math.max(0, elapsed - p.delay);
+                    const t = Math.min(1, localElapsed / ASSEMBLE_DURATION);
+                    const eased = easeOutCubic(t);
+                    const currentX = p.x + (p.targetX - p.x) * eased;
+                    const currentY = p.y + (p.targetY - p.y) * eased;
+
+                    ctx.fillStyle = p.color;
+                    ctx.globalAlpha = 0.3 + eased * 0.7;
+                    ctx.fillRect(currentX, currentY, p.size, p.size);
+
+                    if (t >= 1) doneCount++;
+                });
+                ctx.globalAlpha = 1;
+
+                progressBar.style.width = Math.round((doneCount / particles.length) * 100) + '%';
+
+                if (doneCount < particles.length) {
+                    requestAnimationFrame(animate);
+                } else {
+                    const elapsedShow = performance.now() - startShow;
+                    const remaining = Math.max(0, MIN_SHOW_TIME - elapsedShow);
+                    loadingText.textContent = 'اكتمل ✓';
+                    setTimeout(() => {
+                        loadingScreen.classList.add('hidden');
+                        setTimeout(() => loadingScreen.remove(), 800);
+                    }, remaining);
+                }
+            }
+            requestAnimationFrame(animate);
+        };
+
+        img.onerror = fallbackHide;
+    })();
+    </script>
+
     <script src="script.js"></script>
 </body>
 </html>
