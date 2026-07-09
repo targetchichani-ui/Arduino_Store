@@ -30,7 +30,7 @@
             justify-content: center;
             align-items: center;
             z-index: 99999;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
+            transition: opacity 1.5s ease, visibility  1.5s ease;
         }
         #loading-screen.hidden {
             opacity: 0;
@@ -63,7 +63,7 @@
             width: 0%;
             background: linear-gradient(90deg, #5b8def, #7fd4ff);
             border-radius: 3px;
-            transition: width 0.8s ease;
+            transition: width 1.5s ease;
         }
     </style>
 </head>
@@ -360,7 +360,7 @@
             // إلا الصورة ما تحملاتش (مسار خاطئ)، نخبيو الشاشة بلا كريش للموقع
             setTimeout(() => {
                 loadingScreen.classList.add('hidden');
-                setTimeout(() => loadingScreen.remove(), 800);
+                setTimeout(() => loadingScreen.remove(), 1500);
             }, MIN_SHOW_TIME);
         }
 
@@ -440,7 +440,7 @@
                     loadingText.textContent = 'اكتمل ✓';
                     setTimeout(() => {
                         loadingScreen.classList.add('hidden');
-                        setTimeout(() => loadingScreen.remove(), 800);
+                        setTimeout(() => loadingScreen.remove(), 1500);
                     }, remaining);
                 }
             }
