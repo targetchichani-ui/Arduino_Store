@@ -121,7 +121,8 @@ document.addEventListener("DOMContentLoaded", () => {
             testimonial4_name: "جليل عبد الباسط",
             testimonial4_location: "واد رهيوا",
             trust_cod: "الدفع عند الاستلام",
-            trust_support: "دعم فني 24/7"
+            trust_support: "دعم فني 24/7",
+            partners_title: "من بين زبائننا: طلبة وموظفين من"
         },
         en: {
             doc_title: "Arduino Store - Houssam HK",
@@ -204,17 +205,18 @@ document.addEventListener("DOMContentLoaded", () => {
             testimonial1_text: "The quality of the components and the explanations are very clear, thank you for making it easier for us to get into this technical field.",
             testimonial1_name: "Yassine Moulfi",
             testimonial1_location: "Sidi Bel Abbes",
-            testimonial2_text: "First time buying electronics online and I don't regret it, customer support replies fast on WhatsApp.",
-            testimonial2_name: "T.Nadir",
+            testimonial2_text: "I learned a lot from your lessons, the gradual step-by-step explanation of components from scratch is the best thing about your site.",
+            testimonial2_name: "Nadir Tasghat",
             testimonial2_location: "Oran",
             testimonial3_text: "The best Arabic website for Arduino projects, the content is organized and very useful for both hobbyists and professionals.",
-            testimonial3_name: "CHEMMEAM ILYES",
+            testimonial3_name: "Chemmam Ilyes",
             testimonial3_location: "BOUMERDES",
             testimonial4_text: "A great and simplified project! Thank you for sharing the code and explaining the steps so clearly.",
             testimonial4_name: "Djlil Abdelbasset",
             testimonial4_location: "Oued Rhiou",
             trust_cod: "Cash on delivery",
-            trust_support: "24/7 technical support"
+            trust_support: "24/7 technical support",
+            partners_title: "Among our customers: students & employees from"
         }
     };
 
