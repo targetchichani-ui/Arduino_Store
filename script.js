@@ -105,7 +105,23 @@ document.addEventListener("DOMContentLoaded", () => {
             error_404_title: "الصفحة اللي قلبت عليها ماكانتش",
             error_404_desc: "يمكن الرابط تبدل ولا الصفحة تشالت. جرب ترجع للرئيسية ولا تكمل التسوق عندنا.",
             error_404_home: "الرئيسية",
-            error_404_shop: "تصفح المتجر"
+            error_404_shop: "تصفح المتجر",
+            testimonials_title: "وش قالوا عنا الزبائن",
+            testimonials_subtitle: "تجارب حقيقية من زبائن اشترو معانا وثقو في الجودة والخدمة",
+            testimonial1_text: "طلبت Arduino Uno وواصلني في ظرف يومين، والتغليف كان محترف والقطعة أصلية 100%.",
+            testimonial1_name: "ياسين ب.",
+            testimonial1_location: "الجزائر العاصمة",
+            testimonial2_text: "أول مرة نجرب نشري إلكترونيك أونلاين وما ندمتش، خدمة الزبائن يجاوبوك بسرعة في واتساب.",
+            testimonial2_name: "أمينة ك.",
+            testimonial2_location: "وهران",
+            testimonial3_text: "الأسعار معقولة مقارنة بالسوق، وعندهم تشكيلة واسعة من الحساسات والوحدات.",
+            testimonial3_name: "سفيان ت.",
+            testimonial3_location: "قسنطينة",
+            testimonial4_text: "بدلت منتج ما عجبنيش وما كانش عندي حتى مشكل، احترافية كبيرة في التعامل.",
+            testimonial4_name: "نورهان ل.",
+            testimonial4_location: "سطيف",
+            trust_cod: "الدفع عند الاستلام",
+            trust_support: "دعم فني 24/7"
         },
         en: {
             doc_title: "Arduino Store - Houssam HK",
@@ -182,7 +198,23 @@ document.addEventListener("DOMContentLoaded", () => {
             error_404_title: "The page you're looking for doesn't exist",
             error_404_desc: "The link may have changed or the page was removed. Try going back home or continue shopping with us.",
             error_404_home: "Home",
-            error_404_shop: "Browse Shop"
+            error_404_shop: "Browse Shop",
+            testimonials_title: "What Our Customers Say",
+            testimonials_subtitle: "Real experiences from customers who trusted our quality and service",
+            testimonial1_text: "I ordered an Arduino Uno and it arrived within two days, the packaging was professional and the part was 100% original.",
+            testimonial1_name: "Yacine B.",
+            testimonial1_location: "Algiers",
+            testimonial2_text: "First time buying electronics online and I don't regret it, customer support replies fast on WhatsApp.",
+            testimonial2_name: "Amina K.",
+            testimonial2_location: "Oran",
+            testimonial3_text: "Prices are reasonable compared to the market, and they have a wide range of sensors and modules.",
+            testimonial3_name: "Sofiane T.",
+            testimonial3_location: "Constantine",
+            testimonial4_text: "I exchanged a product I didn't like and there was no issue at all, very professional service.",
+            testimonial4_name: "Nourhane L.",
+            testimonial4_location: "Setif",
+            trust_cod: "Cash on delivery",
+            trust_support: "24/7 technical support"
         }
     };
 

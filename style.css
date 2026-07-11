@@ -1998,3 +1998,166 @@ html.dark-mode .error-404-actions .btn-secondary-404:hover {
     background-color: #6ba7b3;
     color: #0f1720;
 }
+/* ==========================================================================
+   قسم الإثبات الاجتماعي (Social Proof) - آراء الزبائن + شارات الثقة
+   ========================================================================== */
+.testimonials-section {
+    padding: 80px 5%;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.testimonials-header h2 {
+    font-size: 2rem;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.testimonials-header p {
+    color: #666;
+    margin-bottom: 45px;
+    font-size: 15px;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    background: var(--bg-color);
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 28px 22px;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--primary-color);
+    box-shadow: 0 10px 25px rgba(0, 129, 138, 0.12);
+}
+
+.testimonial-stars i {
+    color: #f4b400;
+    font-size: 13px;
+    margin-left: 2px;
+}
+
+.testimonial-text {
+    color: #444;
+    font-size: 14.5px;
+    line-height: 1.8;
+    flex-grow: 1;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 14px;
+}
+
+.testimonial-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.testimonial-author-info h4 {
+    font-size: 14px;
+    color: #222;
+    margin-bottom: 2px;
+}
+
+.testimonial-author-info span {
+    font-size: 12px;
+    color: #888;
+}
+
+/* شارات الثقة */
+.trust-badges-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 55px auto 0;
+    padding-top: 40px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.trust-badge-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #444;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.trust-badge-item i {
+    color: var(--primary-color);
+    font-size: 22px;
+}
+
+@media (max-width: 600px) {
+    .trust-badges-bar { gap: 22px 30px; }
+    .testimonials-header h2 { font-size: 1.6rem; }
+    .testimonial-card { text-align: right; }
+}
+
+/* ===== الوضع الليلي: قسم آراء الزبائن ===== */
+html.dark-mode .testimonials-section {
+    background-color: #0f1720;
+}
+
+html.dark-mode .testimonials-header h2 {
+    color: #e6edf3;
+}
+
+html.dark-mode .testimonials-header p,
+html.dark-mode .testimonial-text {
+    color: #9fb0bd;
+}
+
+html.dark-mode .testimonial-card {
+    background-color: #17212b;
+    border-color: #2a3744;
+}
+
+html.dark-mode .testimonial-author {
+    border-top-color: #2a3744;
+}
+
+html.dark-mode .testimonial-author-info h4 {
+    color: #e6edf3;
+}
+
+html.dark-mode .testimonial-author-info span {
+    color: #7d8b96;
+}
+
+html.dark-mode .trust-badges-bar {
+    border-top-color: #2a3744;
+}
+
+html.dark-mode .trust-badge-item {
+    color: #cbd5e0;
+}
