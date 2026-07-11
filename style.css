@@ -2163,7 +2163,7 @@ html.dark-mode .trust-badge-item {
     color: #cbd5e0;
 }
 /* ==========================================================================
-   شريط الشراكات (جامعات وشركات) - Text-based partner bar
+   شريط الشراكات (جامعات وشركات) - Logo-based partner bar
    ========================================================================== */
 .partners-section {
     padding: 45px 5% 60px;
@@ -2190,23 +2190,42 @@ html.dark-mode .trust-badge-item {
     margin: 0 auto;
 }
 
-.partner-name {
-    font-size: 17px;
-    font-weight: 700;
-    color: #b0b8be;
-    letter-spacing: 0.5px;
-    transition: color 0.3s ease, transform 0.3s ease;
+.partner-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border: 1px solid #eef0f2;
+    border-radius: 14px;
+    padding: 12px 18px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: default;
 }
 
-.partner-name:hover {
-    color: var(--primary-color);
+.partner-logo img {
+    height: 48px;
+    width: auto;
+    max-width: 130px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.75;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.partner-logo:hover {
     transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.partner-logo:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
 }
 
 @media (max-width: 600px) {
-    .partners-bar { gap: 26px 34px; }
-    .partner-name { font-size: 14px; }
+    .partners-bar { gap: 18px 22px; }
+    .partner-logo { padding: 10px 14px; }
+    .partner-logo img { height: 36px; max-width: 100px; }
 }
 
 /* ===== الوضع الليلي: شريط الشراكات ===== */
@@ -2218,10 +2237,7 @@ html.dark-mode .partners-title {
     color: #6b7a86;
 }
 
-html.dark-mode .partner-name {
-    color: #3a4a58;
-}
-
-html.dark-mode .partner-name:hover {
-    color: #6ba7b3;
+html.dark-mode .partner-logo {
+    background-color: #ffffff;
+    border-color: #1c2b38;
 }

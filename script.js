@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
             testimonial4_location: "واد رهيوا",
             trust_cod: "الدفع عند الاستلام",
             trust_support: "دعم فني 24/7",
-            partners_title: "من بين زبائننا: طلبة وموظفين من"
+            partners_title: "فريقنا"
         },
         en: {
             doc_title: "Arduino Store - Houssam HK",
@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
             testimonial4_location: "Oued Rhiou",
             trust_cod: "Cash on delivery",
             trust_support: "24/7 technical support",
-            partners_title: "Among our customers: students & employees from"
+            partners_title: "Our Team"
         }
     };
 
