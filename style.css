@@ -2302,8 +2302,8 @@ html.dark-mode .partner-logo {
  
 /* Raspberry Pi logo has a dark background baked into the image */
 .client-logo-dark-bg {
-    background-color: #12173b;
-    border-color: #12173b;
+    background-color: #ffffff;
+    border-color: #eff1ff;
 }
  
 @media (max-width: 600px) {
