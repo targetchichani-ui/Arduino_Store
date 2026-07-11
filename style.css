@@ -2240,4 +2240,93 @@ html.dark-mode .partners-title {
 html.dark-mode .partner-logo {
     background-color: #ffffff;
     border-color: #1c2b38;
+}/* ==========================================================================
+   شريط عملاؤنا - Our Clients logo bar
+   ========================================================================== */
+.clients-section {
+    padding: 45px 5% 60px;
+    text-align: center;
+    background-color: #ffffff;
+}
+ 
+.clients-title {
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #999;
+    font-weight: 600;
+    margin-bottom: 26px;
+}
+ 
+.clients-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 40px 55px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+ 
+.client-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border: 1px solid #eef0f2;
+    border-radius: 14px;
+    padding: 12px 18px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+}
+ 
+.client-logo img {
+    height: 48px;
+    width: auto;
+    max-width: 130px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.75;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+ 
+.client-logo:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+ 
+.client-logo:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+ 
+/* Raspberry Pi logo has a dark background baked into the image */
+.client-logo-dark-bg {
+    background-color: #12173b;
+    border-color: #12173b;
+}
+ 
+@media (max-width: 600px) {
+    .clients-bar { gap: 18px 22px; }
+    .client-logo { padding: 10px 14px; }
+    .client-logo img { height: 36px; max-width: 100px; }
+}
+ 
+/* ===== الوضع الليلي: شريط عملاؤنا ===== */
+html.dark-mode .clients-section {
+    background-color: #0f1720;
+}
+ 
+html.dark-mode .clients-title {
+    color: #6b7a86;
+}
+ 
+html.dark-mode .client-logo {
+    background-color: #ffffff;
+    border-color: #1c2b38;
+}
+ 
+html.dark-mode .client-logo-dark-bg {
+    background-color: #12173b;
+    border-color: #12173b;
 }
