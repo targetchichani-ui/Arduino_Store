@@ -2078,6 +2078,7 @@ html.dark-mode .error-404-actions .btn-secondary-404:hover {
     font-weight: 700;
     font-size: 14px;
     flex-shrink: 0;
+    object-fit: cover;
 }
 
 .testimonial-author-info h4 {
