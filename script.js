@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
             testimonial1_name: "ياسين مولفي",
             testimonial1_location: "سيدي بلعباس",
             testimonial2_text: "تعلمت الكثير من دروسك، التدرج في شرح المكونات من الصفر هو أفضل شيء في موقعكم.",
-            testimonial2_name: "نذير تسغات",
+            testimonial2_name: "نذير تازغات",
             testimonial2_location: "وهران",
             testimonial3_text: "أفضل موقع عربي لمشاريع الأردوينو، المحتوى مرتب ومفيد جداً للهواة والمحترفين.",
             testimonial3_name: "شمام إلياس ",
