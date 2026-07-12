@@ -14,9 +14,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="doc_title">متجر أردوينو الإلكتروني - Houssam HK</title>
     <meta name="description" content="اكتشف تفاصيل المنتج، السعر، والتقييمات، وأضفه لسلتك أو للمفضلة بضغطة وحدة.">
-    <link rel="icon" type="image/png" href="Gemini_Generated_Image_xmbnsvxmbnsvxmbn.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet';">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="style.min.css">
 </head>
 <body>
 
@@ -263,7 +264,7 @@
 
     <!-- ربط السكريبت الموحد لضمان عمل الترجمة ونظام اللغات في هذه الصفحة أيضاً -->
     <script src="products-data.js"></script>
-    <script src="script.js"></script>
+    <script src="script.min.js" defer></script>
     <!-- كود تفاصيل المنتج مدموج مباشرة هنا (بدل ملف خارجي) باش نتفاديو أي مشكل فاسم الملف -->
     <script>
 document.addEventListener("DOMContentLoaded", () => {
